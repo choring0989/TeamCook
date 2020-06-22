@@ -120,7 +120,6 @@ ol {
 /*---------------------
   Helper CSS
 -----------------------*/
-
 .set-bg {
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -247,7 +246,7 @@ ol {
 	display: block;
 	height: 100%;
 	padding-top: 30px;
-	background: #323232;
+	background: #353535;
 	text-align: center;
 	cursor: pointer;
 }
@@ -304,15 +303,26 @@ ol {
 /*---------------------
   Header
 -----------------------*/
+.nav-custom{
+	flex-grow: 1;
+	text-align: right; 
+	padding: 28px 10px 8px 10px;
+}
+.search-box{
+	height: 34px;
+    border-radius: 2px;
+}
 
 .header-section {
-	padding-top: 65px;
-	padding-bottom: 30px;
+	margin: 30px 80px 30px 80px;
+	height: 76px;
 }
 
 .header-section .logo {
-	text-align: center;
-	margin-bottom: 92px;
+	max-height: 60px;
+	text-align: left;
+	margin-top: 8px;
+	margin-left: 4px;
 }
 
 .header-section .logo a {
@@ -324,6 +334,7 @@ ol {
 }
 
 .header-section .nav-menu .main-menu {
+	display: none;
 	text-align: center;
 }
 
@@ -453,7 +464,8 @@ ol {
 }
 
 .slicknav_menu {
-	display: none;
+	flex-basis: 2;
+	/*display: none;*/
 }
 
 /*---------------------
@@ -998,6 +1010,7 @@ ol {
 }
 
 .header-section-other .nav-menu .main-menu {
+	display: none;
 	margin-right: 100px;
 }
 
@@ -2305,7 +2318,7 @@ ol {
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
 	.header-section .nav-menu .nav-right {
-		right: 90px;
+		margin-right: 45px;
 	}
 	.fr-item .fr-item-img {
 		float: none;
@@ -2322,7 +2335,7 @@ ol {
 	.hero-search .filter-table .filter-search button {
 		padding: 12px 40px;
 	}
-	.header-section-other .nav-menu .main-menu {
+	.header-section .nav-menu .main-menu {
 		margin-right: 45px;
 	}
 	.recipe-top {
@@ -2357,13 +2370,13 @@ ol {
 	.fr-item {
 		margin-bottom: 80px;
 	}
-	.header-section-other .nav-menu .main-menu {
+	.header-section .nav-menu .main-menu {
 		margin-right: 30px;
 	}
-	.header-section-other .nav-menu .main-menu ul li {
+	.header-section .nav-menu .main-menu ul li {
 		margin-right: 20px;
 	}
-	.header-section-other .nav-menu .main-menu ul li:after {
+	.header-section .nav-menu .main-menu ul li:after {
 		right: -12px;
 	}
 	.hero-search .filter-table .filter-search input {
@@ -2378,7 +2391,7 @@ ol {
 	.page-top-recipe .pt-recipe-item.large-item .pt-recipe-img {
 		height: 680px;
 	}
-	.header-section-other {
+	.header-section {
 		padding-left: 15px;
 		padding-right: 15px;
 	}
@@ -2400,6 +2413,9 @@ ol {
 
 @media only screen and (max-width: 767px) {
 	.main-menu {
+		display: none;
+	}
+	.search-box{
 		display: none;
 	}
 	.slicknav_menu {
@@ -2430,6 +2446,7 @@ ol {
 		color: #fff;
 		border-radius: 0;
 	}
+
 	.header-section .logo {
 		margin-bottom: 25px;
 	}
@@ -2463,17 +2480,17 @@ ol {
 	.footer-section .subscribe-form input {
 		width: 100%;
 	}
-	.header-section-other {
+	.header-section {
 		padding-left: 0;
 		padding-right: 0;
 		height: auto;
 	}
-	.header-section-other .logo {
+	.header-section .logo {
 		float: none;
 		text-align: center;
 		margin-bottom: 10px;
 	}
-	.header-section-other .nav-menu .nav-right {
+	.header-section .nav-menu .nav-right {
 		right: 110px;
 		top: -4px;
 	}
