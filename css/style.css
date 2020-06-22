@@ -314,8 +314,9 @@ ol {
 }
 
 .header-section {
+	border-bottom: solid #bbb 1px;
 	margin: 30px 80px 30px 80px;
-	height: 76px;
+	height: 82px;
 }
 
 .header-section .logo {
