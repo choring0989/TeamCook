@@ -39,6 +39,12 @@ body {
 	background: none;
 }
 
+#search-result-header{
+	color: #ffffff;
+	text-align: center;
+	padding-top: 100px;
+}
+
 h1,
 h2,
 h3,
@@ -127,8 +133,8 @@ ol {
 }
 
 .spad {
-	padding-top: 100px;
-	padding-bottom: 100px;
+	padding-top: 30px;
+	padding-bottom: 30px;
 }
 
 .text-white h1,

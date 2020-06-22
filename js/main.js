@@ -38,7 +38,6 @@
         $(this).css('background-image', 'url(' + bg + ')');
     });
 
-
     // Search model
 	$('.search-switch').on('click', function() {
 		$('.search-model').fadeIn(400);
