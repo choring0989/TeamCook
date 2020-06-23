@@ -12,7 +12,6 @@
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700&display=swap" rel="stylesheet">
 
-    <link rel="html" href="accessFB.html" type="html">
     <!-- Css Styles -->
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
@@ -132,14 +131,16 @@
         var database = firebase.database();
 
         // DB에 데이터 넣을 경우에만 주석 풀어주세요 주석 풀려있으면 같은 데이터가 계속 들어가요!!
+        // 태환님이 만드셨던 example1.html 의 오므라이스 레시피 그대로 번역한 내용입니다! 참고해주세요!
         /*
-        var timestamp = new Date().getTime();
-        var name = "Omurice_test";
-        var category = ["Western food"];
-        var img = "img/recipe-5.jpg"
-        var tags = ["western food", "Dinner", "Spicy"];
-        var part = ["Sauce", "Fried rice", "Egg garnish(달걀옷)"];
-
+        var timestamp = new Date().getTime(); // ID입니다 수정하지 않으셔도 괜찮아요
+        var name = "Omurice_test"; // 음식 이름
+        var category = ["Western food"]; // 음식의 대분류
+        var img = "img/recipe-5.jpg" // 넣으시려는 이미지 상대경로
+        var tags = ["western food", "Dinner", "Spicy"]; // 음식 태그입니다! 꼭 어레이로 넣어주세요!
+        var part = ["Sauce", "Fried rice", "Egg garnish(달걀옷)"]; // 음식 조리할 때 나눠지는(?) 대분류입니다.
+        // 재료입니다! 2중 어레이입니다. 첫번째 큰 어레이가 소스 재료, 두번째 큰 어레이가 볶음밥 재료, 마지막 큰 어레이가 달걀옷 재료입니다.
+        // *****part의 어레이 안에 들어가는 엘레먼트 갯수, ingre에 들어가는 큰 어레이 갯수, order에 들어가는 큰 어레이 갯수가 일치해야합니다. (현재 모두 각각 3개)
         var ingre = [
                     ["Flour 1T(10g)", "Cooking Oil 2T (15g)", "Ketchup 2T(30g)", "Soy sauce 2T (20g)", 
                     "Brown sugar 1.5T(15g)",
@@ -157,7 +158,11 @@
                     
                     ["2~3 eggs"]];
 
+        // description은 요리 간단 설명입니다.
         var description = "Omurice is a Japanese dish wrapped in chopped rice with vegetables and ham, mixed with ketchup and fried. One of the Japanese dishes influenced by the West, the name is a combination of French omelette and rice, which means English rice.";
+        
+        // 아래는 2중 어레이인데 첫번째 큰 어레이가 소스 레시피, 두번째 큰 어레이가 볶음밥 레시피, 마지막 큰 어레이가 달걀옷 레시피입니다.
+        // "~" 하고 큰 따옴표 안에 들어오는 내용들이 각 요리의 step by step의 step 하나입니다!
         var order = [
             ["Add cooking oil and flour to the skillet and fry brown.",
             "When it is colored, add water and release the lu.",
@@ -173,8 +178,9 @@
             "Stir-fry over cooked scrambled.",
             "Cover it over the rice in the bowl."]
         ];
-        var tip = "When making Omurice, use a hand-sized frying pan.";
+        var tip = "When making Omurice, use a hand-sized frying pan.";//요리 팁입니다. 없을 경우 "none"이라고 적어주세요! 아무것도 적지 않으면 오류가 납니다...
 
+        // 위에 적은 정보를 아래 함수를 호출에서 DB에 자동으로 넣습니다.
         writeUserData(timestamp, name, category, img, tags, part, ingre, description, order, tip);
 
         function writeUserData(time, name, category, img, tags, part, ingre, description, order, tip) {
@@ -193,19 +199,19 @@
         //여기까지 DB에 게시글 넣는 내용 주석!!!
         */
 
-        var recipes = document.getElementsByClassName('recipe-item');  
-        console.log(recipes[0].getElementsByTagName('img')[0].src);
+        //var recipes = document.getElementsByClassName('recipe-item');  
+        //console.log(recipes[0].getElementsByTagName('img')[0].src);//DOM 엘레먼트 실험용
 
     
         /* DB에서 게시글 불러오기 */
-        // 한 페이지에 8개까지 출력합시다
+        // 한 페이지에 8개까지 출력합니다.
 
-        var addingSectionTop = document.getElementsByClassName("recipe-section spad")[0];
-        var addingSectionRow = addingSectionTop.getElementsByClassName("row");
+        var addingSectionTop = document.getElementsByClassName("recipe-section spad")[0];// 81번줄 <section class="recipe-section spad"> 내용을 가져옵니다.
+        var addingSectionRow = addingSectionTop.getElementsByClassName("row");//<section class="recipe-section spad"> 안의 row에 레시피를 넣을 거라 가져왔습니다.
 
-        var recentPostsRef = firebase.database().ref('recipes/').limitToLast(8);
+        var recentPostsRef = firebase.database().ref('recipes/').limitToLast(8);//DB에서 최신 8개 데이터를 가져옵니다. (가장 나중에 넣은 데이터가 가장 최신 데이터입니다!)
         recentPostsRef.on('child_added', function(data) {
-            console.log(data.val().name);
+            console.log(data.val().name);//테스팅용
             
             // HTML 화면에 DB 데이터로 엘레먼트 생성
             var col = document.createElement('div');
@@ -213,12 +219,12 @@
             var item = document.createElement('div');
             item.setAttribute('class', 'recipe-item');
             var a = document.createElement("a");
-            a.setAttribute("href", "#"); // #에 다이브 할 페이지 주소 넣어주세요
+            a.setAttribute("href", "#"); // #에 다이브 할 페이지 주소 넣어주세요 (추후에, 현재x)
 
             // 사용하는 템플릿 이미지 사이즈 조정이 유동식이라 style로 사이즈 맞추는게 어려워요.
             // 추후에 DB에 사진을 넣을 때 362*352 사이즈로 잘라 넣어 줘야 해요
             var preview = document.createElement("img");
-            preview.setAttribute("src", data.val().img); //#에 미리보기 이미지 URL 넣어주세요
+            preview.setAttribute("src", data.val().img); // 미리보기 이미지 URL
 
             var ritext = document.createElement("div");
             ritext.setAttribute("class", "ri-text");
@@ -231,11 +237,12 @@
             name_link.setAttribute("href", "#"); // a.setAttribute("href", "#")랑 같은 주소 넣어주세요
 
             var title = document.createElement("h4");
-            title.innerHTML = data.val().name; // 레시피 이름 넣어주세요
+            title.innerHTML = data.val().name; // 레시피 이름
 
             var p = document.createElement("p");
-            p.innerHTML = data.val().description_origin; // 레시피 요약 설명 넣어주세요
+            p.innerHTML = data.val().description_origin; // 레시피 요약 설명
             
+            //***** 계층 관계대로 붙여주세요 86번~98번줄 참고!
             addingSectionRow[0].appendChild(col).appendChild(item).appendChild(a);
             a.appendChild(preview);
             item.appendChild(ritext).appendChild(catname);
