@@ -215,6 +215,8 @@
             var a = document.createElement("a");
             a.setAttribute("href", "#"); // #에 다이브 할 페이지 주소 넣어주세요
 
+            // 사용하는 템플릿 이미지 사이즈 조정이 유동식이라 style로 사이즈 맞추는게 어려워요.
+            // 추후에 DB에 사진을 넣을 때 362*352 사이즈로 잘라 넣어 줘야 해요
             var preview = document.createElement("img");
             preview.setAttribute("src", data.val().img); //#에 미리보기 이미지 URL 넣어주세요
 
