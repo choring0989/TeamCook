@@ -82,21 +82,7 @@
         <div class="container">
 
             <div class="row">
-
-                <div class="col-lg-3 col-sm-5">
-                    <div class="recipe-item">
-                        <a href="#"><img src="img/recipe/recipe-1.jpg" alt=""></a>
-                        <div class="ri-text">
-                            <div class="cat-name">Desert</div>
-                            <a href="#">
-                                <h4>One Pot Weeknight Soup</h4>
-                            </a>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                                ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet.</p>
-                        </div>
-                    </div>
-                </div>
-
+                <!--레시피가 들어가욧-->
             </div>
             <div class="row">
                 <div class="col-lg-12">
@@ -211,7 +197,7 @@
 
         var recentPostsRef = firebase.database().ref('recipes/').limitToLast(8);//DB에서 최신 8개 데이터를 가져옵니다. (가장 나중에 넣은 데이터가 가장 최신 데이터입니다!)
         recentPostsRef.on('child_added', function(data) {
-            console.log(data.val().name);//테스팅용
+            console.log(data.key);//테스팅용
             
             // HTML 화면에 DB 데이터로 엘레먼트 생성
             var col = document.createElement('div');
@@ -219,7 +205,8 @@
             var item = document.createElement('div');
             item.setAttribute('class', 'recipe-item');
             var a = document.createElement("a");
-            a.setAttribute("href", "#"); // #에 다이브 할 페이지 주소 넣어주세요 (추후에, 현재x)
+            var href = "recipe-budae.html?key="+data.key;// GET 메소드로 주소 보내기
+            a.setAttribute("href", href); // #에 다이브 할 페이지 주소 넣어주세요 (추후에, 현재x)
 
             // 사용하는 템플릿 이미지 사이즈 조정이 유동식이라 style로 사이즈 맞추는게 어려워요.
             // 추후에 DB에 사진을 넣을 때 362*352 사이즈로 잘라 넣어 줘야 해요
@@ -234,7 +221,7 @@
             catname.innerHTML = data.val().category; // ?에 대표 카테고리
 
             var name_link = document.createElement("a");
-            name_link.setAttribute("href", "#"); // a.setAttribute("href", "#")랑 같은 주소 넣어주세요
+            name_link.setAttribute("href", href); // a.setAttribute("href", "#")랑 같은 주소 넣어주세요
 
             var title = document.createElement("h4");
             title.innerHTML = data.val().name; // 레시피 이름

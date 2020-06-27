@@ -1460,22 +1460,37 @@ ol {
 }
 
 .recipe-top {
-	margin-bottom: 128px;
+	/*margin-bottom: 128px;*/
 	padding: 0 60px;
+	display: flex;
+}
+.recipe-top .container-fluid {
+
 }
 
-.recipe-top .recipe-title {
-	text-align: center;
+.recipe-top .container-fluid .recipe-title {
 	margin-bottom: 90px;
 }
 
-.recipe-top .recipe-title span {
+.recipe-top .container-fluid .recipe-title span {
 	display: inline-block;
-	color: #FC0254;
+	color: black;
 	font-size: 16px;
 }
 
-.recipe-top .recipe-title h2 {
+.recipe-top .container-fluid .recipe-title a {
+	color: black;
+	font-weight: 800;
+	font-style: italic;
+}
+
+.recipe-top .container-fluid .recipe-title a:hover {
+	color: blue;
+	text-decoration: none;
+}
+
+
+.recipe-top .container-fluid .recipe-title h2 {
 	color: #353535;
 	font-size: 48px;
 	font-weight: 700;
@@ -1484,7 +1499,7 @@ ol {
 	margin-top: 40px;
 }
 
-.recipe-top .recipe-title ul li {
+.recipe-top .container-fluid .recipe-title ul li {
 	list-style: none;
 	display: inline-block;
 	font-size: 12px;
@@ -1496,13 +1511,50 @@ ol {
 	margin-right: 2px;
 }
 
-.recipe-top .recipe-title ul li:last-child {
+.recipe-top .container-fluid .recipe-title ul li:last-child {
 	margin-right: 0;
 }
+.recipe-top .container-fluid .btn-box {
+}
 
+.recipe-top .container-fluid .recipe-btn {
+	display: inline-block;
+	background: #FC0254;
+	font-size: 16px;
+	font-weight: 700;
+	text-decoration: none;
+	padding: 15px 57px;
+	margin-top: 20px;
+	margin-bottom: 38px;
+}
+
+.recipe-top .container-fluid .recipe-btn a {
+	color: white;
+}
+
+.recipe-top .container-fluid .recipe-btn2 {
+	display: inline-block;
+	background: #FC0254;
+	font-size: 16px;
+	font-weight: 700;
+	text-decoration: none;
+	padding: 15px 57px;
+	margin-top: 20px;
+	margin-bottom: 38px;
+	float: right;
+}
+
+.recipe-top .container-fluid .recipe-btn2 a {
+	color: white;
+}
+
+.recipe-top .col-lg-5 {
+	width: 30%;
+}
 .ingredients-item {
 	border: 2px solid #F5F6FA;
 	margin-bottom: 20px;
+	margin-top: 10%;
 }
 
 .ingredients-item .intro-item {
@@ -1582,10 +1634,6 @@ ol {
 	padding: 22px 20px;
 }
 
-.ingredients-item .ingredient-list .recipe-btn {
-	margin-bottom: 38px;
-}
-
 .ingredients-item .ingredient-list .recipe-btn a {
 	display: inline-block;
 	background: #FC0254;
@@ -1621,7 +1669,9 @@ ol {
 	text-transform: uppercase;
 	margin-bottom: 30px;
 }
-
+.ingredients-item .ingredient-list .list-item .salad-list a {
+	color: black;
+}
 .ingredients-item .ingredient-list .list-item .salad-list ul li {
 	list-style: none;
 	font-size: 16px;
@@ -1672,12 +1722,65 @@ ol {
 	content: "";
 	border-radius: 50%;
 }
+.recipe-middle {
+	display: flex;
+}
 
-.nutrition-fact {
-	background: #353535;
+.calories {
+	background: #45aa31;
 	padding: 0 40px;
 	padding-top: 50px;
 	padding-bottom: 20px;
+	width: 50%;
+}
+
+.calories .calo-title {
+	overflow: hidden;
+	padding-bottom: 35px;
+	margin-left: -40px;
+	margin-right: -40px;
+	border-bottom: 2px solid #fff;
+	padding-left: 40px;
+	padding-right: 40px;
+}
+
+.calories .calo-title h6 {
+	float: left;
+	color: #fff;
+	font-weight: 600;
+	font-size: larger;
+}
+
+.calories .calo-title span {
+	float: right;
+	color: #fff;
+	font-weight: 600;
+}
+
+.calories ul {
+	margin-top: 23px;
+}
+
+.calories ul li {
+	list-style: none;
+	display: inline-block;
+	font-size: larger;
+	color: #fff;
+	margin-right: 15px;
+	margin-bottom: 10px;
+	font-weight: 600;
+}
+
+.calories ul li:last-child {
+	margin-right: 0;
+}
+
+.nutrition-fact {
+	background: #3160aa;
+	padding: 0 40px;
+	padding-top: 50px;
+	padding-bottom: 20px;
+	width: 50%;
 }
 
 .nutrition-fact .nutri-title {
@@ -1693,11 +1796,14 @@ ol {
 .nutrition-fact .nutri-title h6 {
 	float: left;
 	color: #fff;
+	font-size: larger;
+	font-weight: 600;
 }
 
 .nutrition-fact .nutri-title span {
 	float: right;
 	color: #fff;
+	font-weight: 600;
 }
 
 .nutrition-fact ul {
@@ -1707,41 +1813,51 @@ ol {
 .nutrition-fact ul li {
 	list-style: none;
 	display: inline-block;
-	font-size: 16px;
+	font-size: larger;
 	color: #fff;
 	margin-right: 15px;
 	margin-bottom: 10px;
+	font-weight: 600;
 }
 
 .nutrition-fact ul li:last-child {
 	margin-right: 0;
 }
 
-.recipe-right .recipe-desc {
+.row {
+	display: flex;
+}
+
+.row .col-lg-7 {
+	width: 50%;
+	margin-top: 3%;
+}
+
+.row .col-lg-7 .recipe-right .recipe-desc {
 	margin-bottom: 50px;
 }
 
-.recipe-right .recipe-desc h3 {
+.row .col-lg-7 .recipe-right .recipe-desc h3 {
 	color: #353535;
 	font-weight: 700;
 	margin-bottom: 50px;
 }
 
-.recipe-right .recipe-desc p {
+.row .col-lg-7 .recipe-right .recipe-desc p {
 	margin-bottom: 25px;
 }
 
-.recipe-right .instruction-list {
+.row .col-lg-7 .recipe-right .instruction-list {
 	margin-bottom: 42px;
 }
 
-.recipe-right .instruction-list h3 {
+.row .col-lg-7 .recipe-right .instruction-list h3 {
 	color: #353535;
 	font-weight: 700;
 	margin-bottom: 50px;
 }
 
-.recipe-right .instruction-list ul li {
+.row .col-lg-7 .recipe-right .instruction-list ul li {
 	list-style: none;
 	color: #353535;
 	font-size: 15px;
@@ -1751,7 +1867,7 @@ ol {
 	padding-left: 68px;
 }
 
-.recipe-right .instruction-list ul li span {
+.row .col-lg-7 .recipe-right .instruction-list ul li span {
 	position: absolute;
 	left: 0;
 	top: 0;
@@ -1760,7 +1876,7 @@ ol {
 	font-weight: 700;
 }
 
-.recipe-right .notes h3 {
+.row .col-lg-7 .recipe-right .notes h3 {
 	color: #353535;
 	font-weight: 700;
 	margin-bottom: 35px;
@@ -1798,8 +1914,14 @@ ol {
 
 .similar-recipe {
 	background: #353535;
-	padding-top: 135px;
-	padding-bottom: 60px;
+	padding-top: 10px;
+	padding-bottom: 3px;
+}
+
+.similar-recipe h3 {
+	color: white;
+	margin-left: 10%;
+	margin-bottom: 10px;
 }
 
 .similar-item {
