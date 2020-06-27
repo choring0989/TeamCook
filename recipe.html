@@ -21,229 +21,144 @@
 </head>
 
 <body>
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-app.js"></script>
+
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.1.0/firebase-database.js"></script>
+
     <!-- Page Preloder -->
     <div id="preloder">
         <div class="loader"></div>
     </div>
 
     <!-- Header Section Begin -->
-    <header class="header-section-other">
-        <div class="container-fluid">
-            <div class="logo">
-                <a href="./index.html"><img src="img/little-logo.png" alt=""></a>
-            </div>
-            <div class="nav-menu">
-                <nav class="main-menu mobile-menu">
-                    <ul>
-                        <li class="active"><a href="#">Home</a></li>
-                        <li><a href="#">Pages</a>
-                            <ul class="sub-menu">
-                                <li><a href="about-me.html">About Me</a></li>
-                                <li><a href="categories.html">Categories</a></li>
-                                <li><a href="recipe.html">Recipe</a></li>
-                                <li><a href="blog.html">Blog</a></li>
-                                <li><a href="contact.html">Contact</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="recipe.html">Recipes</a></li>
-                        <li><a href="categories.html">Best Of</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                    </ul>
-                </nav>
-                <div class="nav-right search-switch">
-                    <i class="fa fa-search"></i>
-                </div>
-            </div>
-            <div id="mobile-menu-wrap"></div>
+<!-- Header Section Begin -->
+<header class="header-section">
+    <div class="row container-fluid" style="flex-wrap:nowrap; margin-left:0px;">
+        <div class="logo">
+            <a href="./index.html"><img src="img/little-logo.png" alt=""></a>
         </div>
+        <div class="nav-right nav-custom">
+            <form action="#" class="filter-search">
+                <input type="text" placeholder="Search recipe" class="search-box">
+                <i class="fa fa-search fa-2x"></i>
+            </form>
+        </div>
+        <div id="mobile-menu-wrap" style="overflow: hidden; margin-right: 4px; margin-top: 20px;">
+        </div>
+        <div class="nav-menu">
+            <nav class="main-menu mobile-menu">
+                <ul>
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="#">Pages</a>
+                        <ul class="sub-menu">
+                            <li><a href="categories.html">Categories</a></li>
+                            <li><a href="recipe.html">Recipe</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="recipe.html">Recipes</a></li>
+                    <li><a href="categories.html">Best Of</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
     </header>
     <!-- Header End -->
 
     <!-- Hero Search Section Begin -->
-    <div class="hero-search set-bg" data-setbg="img/search-bg.jpg">
+    <div class="hero-search set-bg" data-setbg="img/search-bg.jpg" style="width: 85.7%; margin: auto; margin-bottom: 30px;">
         <div class="container">
             <div class="filter-table">
-                <form action="#" class="filter-search">
-                    <input type="text" placeholder="Search recipe">
-                    <select id="category">
-                        <option value="">Category</option>
-                    </select>
-                    <select id="tag">
-                        <option value="">Tags</option>
-                    </select>
-                    <button type="submit">Search</button>
-                </form>
+                <h2 id="search-result-header">loading...</h2>
             </div>
         </div>
     </div>
     <!-- Hero Search Section End -->
 
     <!-- Single Recipe Section Begin -->
-    <section class="single-page-recipe spad">
+    <section class="single-page-recipe spad" style="margin: 0px 40px 0px 40px;">
         <div class="recipe-top">
             <div class="container-fluid">
                 <div class="recipe-title">
-                    <span>~ 5 ingredients / 20 minutes / easy / japanese/ recipe</span>
-                    <h2>Chipotle Sweet Potato Noodle Salad <br /> with Roasted Corn</h2>
-                    <ul class="tags">
-                        <li>Desert</li>
-                        <li>Asian</li>
-                        <li>Spicy</li>
-                    </ul>
+                    <span>By
+                        <a href="#">temp Author</a>
+                    </span>
+                    <span>| temp 23 Jun 2020</span>
+                    <h2 id="name"></h2>
                 </div>
-                <img src="img/recipe-single.jpg" alt="">
+                <img id="f_image" src="img/Originals/recipe-stew.jpg" alt="">
+                <div btn-box>
+                    <div class="recipe-btn">
+                        <a href="#">Print This Recipe</a>
+                    </div>
+                    <div class="recipe-btn2">
+                        <a href="#">Add To Bookmark</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <div class="ingredients-item">
+                    <div class="ingredient-list">
+                        <div class="list-item">
+                            <h5>Ingredients</h5>
+                            <div class="salad-list">
+                                <h6 id="main">Main</h6>
+                                <div id="list1"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="recipe-middle">
+            <div class="calories">
+                <div class="calo-title">
+                    <h6>Total Calories</h6>
+                    <span>1251 kcal</span>
+                </div>
+                <ul>
+                    <li>Serving Size : 3 People</li>
+                </ul>
+            </div>
+            <div class="nutrition-fact">
+                <div class="nutri-title">
+                    <h6>Nutrition Facts</h6>
+                    <span>Total Size : 800 g</span>
+                </div>
+                <ul>
+                    <li>Total Fat : 77 g</li>
+                    <li>Total Carbs : 82 g</li>
+                    <li>Total Protein: 55 g</li>
+                </ul>
             </div>
         </div>
         <div class="container">
             <div class="row">
-                <div class="col-lg-5">
-                    <div class="ingredients-item">
-                        <div class="intro-item">
-                            <img src="img/intro-img.jpg" alt="">
-                            <h2>Chipotle Sweet Potato Noodle with Roasted Corn</h2>
-                            <div class="rating">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                            </div>
-                            <div class="reviews">4.9 from 25 reviews</div>
-                            <div class="recipe-time">
-                                <ul>
-                                    <li>Prep time: <span>10 min</span></li>
-                                    <li>Cook time: <span>10 min</span></li>
-                                    <li>Yield: <span>5</span></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="ingredient-list">
-                            <div class="recipe-btn">
-                                <a href="#">Print Recipe</a>
-                                <a href="#" class="black-btn">Pin Recipe</a>
-                            </div>
-                            <div class="list-item">
-                                <h5>Ingredients</h5>
-                                <div class="salad-list">
-                                    <h6>For the salad</h6>
-                                    <ul>
-                                        <li>1 brick of frozen udon</li>
-                                        <li>1/2 cup kimchi, plus a bit of kimchi juice</li>
-                                        <li>1 tablespoon of butter</li>
-                                        <li>1 sac of mentaiko</li>
-                                        <li>sliced green onions and nori, to finish</li>
-                                    </ul>
-                                </div>
-                                <div class="dressing-list">
-                                    <h6>For the dressing</h6>
-                                    <ul>
-                                        <li>1 brick of frozen udon</li>
-                                        <li>1/2 cup kimchi, plus a bit of kimchi juice</li>
-                                        <li>1 tablespoon of butter</li>
-                                        <li>1 sac of mentaiko</li>
-                                        <li>sliced green onions and nori, to finish</li>
-                                        <li>1 tablespoon of butter</li>
-                                        <li>1 sac of mentaiko</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="nutrition-fact">
-                        <div class="nutri-title">
-                            <h6>Nutrition Facts</h6>
-                            <span>Serves 4</span>
-                        </div>
-                        <ul>
-                            <li>Total Fat : 20.4g</li>
-                            <li>Cholesterol : 2%</li>
-                            <li>Chalories: 345</li>
-                        </ul>
-                    </div>
-                </div>
                 <div class="col-lg-7">
                     <div class="recipe-right">
-                        <div class="recipe-desc">
-                            <h3>Description</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                                ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet. Donec in sodales dui, a
-                                blandit nunc. Pellentesque id eros venenatis, sollicitudin neque sodales, vehicula nibh.
-                                Nam massa odio, porttitor vitae efficitur non, ultricies volutpat tellus. Cras egestas
-                                in lacus a finibus. Suspendisse sed urna at elit condimentum viverra. Suspendisse non
-                                lobortis nisi. Maecenas accumsan quam quis porta laoreet. Aliquam felis odio, aliquet
-                                fermentum semper at, porttitor ac mi. Duis vel condimentum risus. Phasellus eu dolor vel
-                                neque commodo accumsan eget et enim. Pellentesque non elit sed risus tincidunt aliquam
-                                eu eget metus.</p>
-                            <p>Donec sit amet enim tortor. Sed egestas nulla nibh, vitae porta velit sagittis eget.
-                                Donec vitae tellus semper, cursus sem id, iaculis purus. Aenean ligula risus, maximus
-                                tristique eros vel, auctor ornare tortor. Aliquam vel augue sapien. Duis non auctor
-                                ante, ac vestibulum tortor. Etiam quis dolor ultricies, dignissim ante a, ornare ipsum.
-                                Phasellus suscipit rhoncus nulla, quis bibendum tortor elementum ac. Nullam viverra
-                                tellus diam, nec accumsan orci aliquam sed. Sed placerat sagittis lacus, non rutrum diam
-                                volutpat id. </p>
-                        </div>
                         <div class="instruction-list">
                             <h3>Instructions</h3>
-                            <ul>
-                                <li>
-                                    <span>01.</span>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                    incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet. Donec in
-                                    sodales dui, a blandit nunc. Pellentesque id eros venenatis, sollicitudin neque
-                                    sodales, vehicula nibh. Nam massa odio, porttitor vitae efficitur non, ultricies
-                                    volutpat tellus. Cras egestas in lacus a finibus. Suspendisse sed urna at elit
-                                    condimentum viverra. Suspendisse non lobortis nisi. Maecenas accumsan quam quis
-                                    porta laoreet. Aliquam felis odio, aliquet fermentum semper at, porttitor ac mi.
-                                </li>
-                                <li>
-                                    <span>02.</span>
-                                    Donec sit amet enim tortor. Sed egestas nulla nibh, vitae porta velit sagittis eget.
-                                    Donec vitae tellus semper, cursus sem id, iaculis purus. Aenean ligula risus,
-                                    maximus tristique eros vel, auctor ornare tortor. Aliquam vel augue sapien. Duis non
-                                    auctor ante, ac vestibulum tortor. Etiam quis dolor ultricies, dignissim ante a,
-                                    ornare ipsum. Phasellus suscipit rhoncus nulla, quis bibendum tortor elementum ac.
-                                    Nullam viverra tellus diam, nec accumsan orci aliquam sed. Sed placerat sagittis
-                                    lacus, non rutrum diam volutpat id.
-                                </li>
-                                <li>
-                                    <span>03.</span>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                    incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet. Donec in
-                                    sodales dui, a blandit nunc. Pellentesque id eros venenatis, sollicitudin neque
-                                    sodales, vehicula nibh. Nam massa odio, porttitor vitae efficitur non, ultricies
-                                    volutpat tellus. Cras egestas in lacus a finibus. Suspendisse sed urna at elit
-                                    condimentum viverra. Suspendisse non lobortis nisi. Maecenas accumsan quam quis
-                                    porta laoreet. Aliquam felis odio, aliquet fermentum semper at, porttitor ac mi.
-                                </li>
-                                <li>
-                                    <span>04.</span>
-                                    Donec sit amet enim tortor. Sed egestas nulla nibh, vitae porta velit sagittis eget.
-                                    Donec vitae tellus semper, cursus sem id, iaculis purus. Aenean ligula risus,
-                                    maximus tristique eros vel, auctor ornare tortor. Aliquam vel augue sapien. Duis non
-                                    auctor ante, ac vestibulum tortor. Etiam quis dolor ultricies, dignissim ante a,
-                                    ornare ipsum. Phasellus suscipit rhoncus nulla, quis bibendum tortor elementum ac.
-                                    Nullam viverra tellus diam, nec accumsan orci aliquam sed. Sed placerat sagittis
-                                    lacus, non rutrum diam volutpat id.
-                                </li>
-                            </ul>
+                            <div id="cok_order"></div>
                         </div>
-                        <div class="notes">
-                            <h3>Notes</h3>
-                            <div class="notes-item">
-                                <span>i</span>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                    incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet. Donec in
-                                    sodales dui, a blandit nunc. Pellentesque id eros venenatis, sollicitudin neque
-                                    sodales, vehicula nibh. Nam massa odio, porttitor vitae efficitur non, ultricies
-                                    volutpat tellus. Cras egestas in lacus a finibus. Suspendisse sed urna at elit
-                                    condimentum viverra.</p>
-                            </div>
-                            <div class="notes-item">
-                                <span>i</span>
-                                <p>Donec in sodales dui, a blandit nunc. Pellentesque id eros venenatis, sollicitudin
-                                    neque sodales, vehicula nibh. Nam massa odio, porttitor vitae efficitur non,
-                                    ultricies volutpat tellus. Cras egestas in lacus a finibus. Suspendisse sed urna at
-                                    elit condimentum viverra.</p>
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <div class="ingredients-item">
+                        <div class="ingredient-list">
+                            <div class="list-item">
+                                <h5>Want other recipes?</h5>
+                                <div class="salad-list">
+                                    <h6>Related TAGS</h6>
+                                    <ul>
+                                        <li><a href="#">Main Food</a></li>
+                                        <li><a href="#">Dinner</a></li>
+                                        <li><a href="#">Spicy</a></li>
+                                        <li><a href="#">Stew</a></li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -253,50 +168,94 @@
     </section>
     <!-- Single Recipe Section End -->
 
+    <script>
+        var firebaseConfig = {
+            apiKey: "AIzaSyA_YlPiT7ZSrxRlYdfDzVH4nG0MspsdHts",
+            authDomain: "team-cook.firebaseapp.com",
+            databaseURL: "https://team-cook.firebaseio.com",
+            projectId: "team-cook",
+            storageBucket: "team-cook.appspot.com",
+            messagingSenderId: "648033990336",
+            appId: "1:648033990336:web:006565376777c3cbab9f25",
+            measurementId: "G-0713Y1K789"
+        };
+
+        // Firebase 활성화
+        firebase.initializeApp(firebaseConfig);
+
+        // 현재 URL 가져오기
+        var url = location.href;
+        // get 파라미터 값을 가져올 수 있는 ? 를 기점으로 slice 한 후 split 으로 나눔
+        var key = (url.slice(url.indexOf('?') + 1, url.length)).split('=')[1];
+        console.log(key);
+
+        //레시피 가져오기-예시는 팟타이
+        var menu_ref = firebase.database().ref("recipes/" + key);
+    </script>
+    <script>
+        menu_ref.once("value").then(function (data) {
+            console.log(data.val().name);
+
+            var menu_name = document.getElementById("name"); //메뉴이름
+            menu_name.innerHTML = data.val().name;
+            document.getElementById('search-result-header').innerHTML = data.val().name;
+
+            //재료목록
+            ingredients = data.val().Ingredients[0];
+            var str = "<ul>"
+            ingredients.forEach(function (ingre) {
+                str += "<li>" + ingre + "</li>";
+            });
+            str += "</ul>";
+            document.getElementById("list1").innerHTML = str;
+
+            //요리순서
+            order = data.val().cooking_order[0];
+            var str2 = "<ul>"
+            order.forEach(function (odnum) {
+                str2 += "<li>" + odnum + "</li>";
+            });
+            str2 += "</ul>";
+            document.getElementById("cok_order").innerHTML = str2;
+        });
+    </script>
+
     <!-- Similar Recipe Section Begin -->
     <section class="similar-recipe spad">
+        <h3>Recent Recipes</h3>
         <div class="container">
-            <div class="row">
-                <div class="col-lg-3 col-md-6">
-                    <div class="similar-item">
-                        <a href="#"><img src="img/cat-feature/small-7.jpg" alt=""></a>
-                        <div class="similar-text">
-                            <div class="cat-name">Vegan</div>
-                            <h6>Italian Tiramisu with Coffe</h6>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="similar-item">
-                        <a href="#"><img src="img/cat-feature/small-6.jpg" alt=""></a>
-                        <div class="similar-text">
-                            <div class="cat-name">Vegan</div>
-                            <h6>Dry Cookies with Corn</h6>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="similar-item">
-                        <a href="#"><img src="img/cat-feature/small-5.jpg" alt=""></a>
-                        <div class="similar-text">
-                            <div class="cat-name">Vegan</div>
-                            <h6>Asparagus with Pork Loin and Vegetables</h6>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="similar-item">
-                        <a href="#"><img src="img/cat-feature/small-4.jpg" alt=""></a>
-                        <div class="similar-text">
-                            <div class="cat-name">Vegan</div>
-                            <h6>Smoked Salmon mini Sandwiches with Onion</h6>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <div class="row"></div>
         </div>
     </section>
     <!-- Similar Recipe Section End -->
+
+    <script>
+        var addingSectionTop = document.getElementsByClassName("similar-recipe spad")[0];// 81번줄 <section class="recipe-section spad"> 내용을 가져옵니다.
+        var addingSectionRow = addingSectionTop.getElementsByClassName("row");//<section class="recipe-section spad"> 안의 row에 레시피를 넣을 거라 가져왔습니다.
+
+        var recentPostsRef = firebase.database().ref('recipes/').limitToLast(4);//DB에서 최신 8개 데이터를 가져옵니다. (가장 나중에 넣은 데이터가 가장 최신 데이터입니다!)
+        recentPostsRef.on('child_added', function (data) {
+            console.log(data.val().name);//테스팅용
+
+            var col = document.createElement("div");
+            col.setAttribute("class", "col-lg-3 col-md-6");
+            var item = document.createElement('div');
+            item.setAttribute('class', 'similar-item');
+            var a = document.createElement("a");
+            a.setAttribute("href", data.val().url);
+
+            var preview = document.createElement("img");
+            preview.setAttribute("src", data.val().img);
+          
+            var smrtext = document.createElement("div");
+            smrtext.setAttribute("class", "ri-similar-text");
+
+            //***** 계층 관계대로 붙여주세요 86번~98번줄 참고!
+            addingSectionRow[0].appendChild(col).appendChild(item).appendChild(a);
+            a.appendChild(preview);
+            item.appendChild(smrtext)
+        });
+    </script>
 
     <!-- Footer Section Begin -->
     <footer class="footer-section">
@@ -333,8 +292,11 @@
                 <div class="col-lg-12">
                     <div class="copyright-text">
                         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        Copyright &copy;
+                        <script>document.write(new Date().getFullYear());</script> All rights reserved | This template
+                        is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com"
+                            target="_blank">Colorlib</a>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                     </div>
                 </div>
             </div>
@@ -342,15 +304,15 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     </footer>
     <!-- Footer Section End -->
     <!-- Search model -->
-	<div class="search-model">
-		<div class="h-100 d-flex align-items-center justify-content-center">
-			<div class="search-close-switch">+</div>
-			<form class="search-model-form">
-				<input type="text" id="search-input" placeholder="Search here.....">
-			</form>
-		</div>
-	</div>
-	<!-- Search model end -->
+    <div class="search-model">
+        <div class="h-100 d-flex align-items-center justify-content-center">
+            <div class="search-close-switch">+</div>
+            <form class="search-model-form">
+                <input type="text" id="search-input" placeholder="Search here.....">
+            </form>
+        </div>
+    </div>
+    <!-- Search model end -->
 
     <!-- Js Plugins -->
     <script src="js/jquery-3.3.1.min.js"></script>
