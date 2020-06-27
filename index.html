@@ -7,7 +7,7 @@
     <meta name="keywords" content="Yoga, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Yummy | Template</title>
+    <title>Team Cook!</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700&display=swap" rel="stylesheet">
@@ -25,16 +25,16 @@
     <div id="preloder">
         <div class="loader"></div>
     </div>
- <!-- Header Section Begin -->
+<!-- Header Section Begin -->
 <header class="header-section">
     <div class="row container-fluid" style="flex-wrap:nowrap; margin-left:0px;">
         <div class="logo">
             <a href="./index.html"><img src="img/little-logo.png" alt=""></a>
         </div>
         <div class="nav-right nav-custom">
-            <form action="#" class="filter-search">
-                <input type="text" placeholder="Search recipe" class="search-box">
-                <i class="fa fa-search fa-2x"></i>
+            <form action="search.html" class="filter-search" method="GET">
+                <input type="text" placeholder="Search recipe" class="search-box" name="input"/>
+                <button type="submit" id="search-btn"><i class="fa fa-search"></i></button>
             </form>
         </div>
         <div id="mobile-menu-wrap" style="overflow: hidden; margin-right: 4px; margin-top: 20px;">
@@ -45,10 +45,8 @@
                     <li class="active"><a href="#">Home</a></li>
                     <li><a href="#">Pages</a>
                         <ul class="sub-menu">
-                            <li><a href="about-me.html">About Me</a></li>
                             <li><a href="categories.html">Categories</a></li>
                             <li><a href="recipe.html">Recipe</a></li>
-                            <li><a href="blog.html">Blog</a></li>
                         </ul>
                     </li>
                     <li><a href="recipe.html">Recipes</a></li>
@@ -59,15 +57,16 @@
     </div>
 </header>
 <!-- Header End -->
-    <!-- Hero Search Section Begin -->
-    <div class="hero-search set-bg" data-setbg="img/search-bg.jpg" style="width: 85.7%; margin: auto; margin-bottom: 30px;">
-        <div class="container">
-            <div class="filter-table">
-        
-            </div>
+<!-- Hero Search Section Begin -->
+<div class="hero-search set-bg" data-setbg="img/search-bg.jpg"
+    style="width: 85.7%; margin: auto; margin-bottom: 30px;">
+    <div class="container">
+        <div class="filter-table">
+            <h2 id="search-result-header">Wellcome!</h2>
         </div>
     </div>
-    <!-- Hero Search Section End -->
+</div>
+<!-- Hero Search Section End -->
 
     <!-- Page Top Recipe Section Begin -->
     <section class="page-top-recipe">

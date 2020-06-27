@@ -953,6 +953,17 @@ ol {
 	min-width: 205px;
 }
 
+#search-btn {
+	border: 1px solid #FC0254;
+	border-radius: 0.5rem;
+	background: #FC0254;
+	color: #fff;
+	padding: 5px 8px;
+	display: inline-block;
+	cursor: pointer;
+	min-width: 20px;
+}
+
 .footer-section .social-links a {
 	display: inline-block;
 	margin-right: 35px;

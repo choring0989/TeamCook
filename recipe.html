@@ -7,7 +7,7 @@
     <meta name="keywords" content="Yoga, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Yummy | Template</title>
+    <title>Team Cook!</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700&display=swap" rel="stylesheet">
@@ -42,9 +42,9 @@
             <a href="./index.html"><img src="img/little-logo.png" alt=""></a>
         </div>
         <div class="nav-right nav-custom">
-            <form action="#" class="filter-search">
-                <input type="text" placeholder="Search recipe" class="search-box">
-                <i class="fa fa-search fa-2x"></i>
+            <form action="search.html" class="filter-search" method="GET">
+                <input type="text" placeholder="Search recipe" class="search-box" name="input"/>
+                <button type="submit" id="search-btn"><i class="fa fa-search"></i></button>
             </form>
         </div>
         <div id="mobile-menu-wrap" style="overflow: hidden; margin-right: 4px; margin-top: 20px;">
@@ -189,7 +189,7 @@
         var key = (url.slice(url.indexOf('?') + 1, url.length)).split('=')[1];
         console.log(key);
 
-        //레시피 가져오기-예시는 팟타이
+        //레시피 가져오기
         var menu_ref = firebase.database().ref("recipes/" + key);
     </script>
     <script>
