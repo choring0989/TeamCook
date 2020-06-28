@@ -191,8 +191,6 @@
 
         //레시피 가져오기
         var menu_ref = firebase.database().ref("recipes/" + key);
-    </script>
-    <script>
         menu_ref.once("value").then(function (data) {
             console.log(data.val().name);
 

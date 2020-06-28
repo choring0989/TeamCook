@@ -121,7 +121,7 @@
         // get 파라미터 값을 가져올 수 있는 ? 를 기점으로 slice 한 후 split 으로 나눔
         var input = (url.slice(url.indexOf('?') + 1, url.length)).split('=')[1];
         console.log(input);
-        input = input.replace(/\+/gi, " ");
+        input = input.replace(/\+/gi, " ");// 주소창으로 값이 넘어오면서 띄어쓰기가 +로 변환되어서 강제 재변환.../\+/gi는 정규식입니다.
         document.getElementById('search-result-header').innerHTML = 'Search results of "'+input+'"';//헤더섹션에 유저가 검색한 내용 표시
 
         var addingSectionTop = document.getElementsByClassName("recipe-section spad")[0];// 81번줄 <section class="recipe-section spad"> 내용을 가져옵니다.
@@ -129,12 +129,18 @@
 
         var rootRef = firebase.database().ref();
 
-        //음식 이름으로 검색
-        var result= rootRef.child('recipes').orderByChild('name').equalTo(input);
+        // 음식 이름으로 검색
+        var result = rootRef.child('recipes').orderByChild('name').equalTo(input);
+        
+        var input2 = input;//유저가 첫글자를 소문자로 검색했을 때 첫 글자를 대문자로 바꿔줘야 합니다.
+        if(input.charAt(0).charCodeAt() > 96) {
+            input2 = input2.replace(input2.charAt(0), input2.charAt(0).toUpperCase());
+            var result2 = rootRef.child('recipes').orderByChild('name').equalTo(input2);
+            Object.assign(result, result2);// 쿼리 병합
+        }
 
         result.once('value', function(snapshot){
             snapshot.forEach(function(data) {
-            console.log(data.val());//테스팅용
 
             // HTML 화면에 DB 데이터로 엘레먼트 생성
             var col = document.createElement('div');
@@ -166,7 +172,54 @@
             var p = document.createElement("p");
             p.innerHTML = data.val().description_origin; // 레시피 요약 설명
 
-            //***** 계층 관계대로 붙여주세요 86번~98번줄 참고!
+            //***** 계층 관계대로 붙여주세요
+            addingSectionRow[0].appendChild(col).appendChild(item).appendChild(a);
+            a.appendChild(preview);
+            item.appendChild(ritext).appendChild(catname);
+            ritext.appendChild(name_link).appendChild(title);
+            ritext.appendChild(p);
+        });
+    });
+
+    var tags = rootRef.child('recipes').orderByChild('tags/'+input).equalTo(true);
+    var tags2 = rootRef.child('recipes').orderByChild('tags/'+input2).equalTo(true);//앞글자 대문자 변환한 값으로 쿼리
+
+    Object.assign(tags, tags2);// 쿼리 병합
+
+    tags.once('value', function(snapshot){
+            snapshot.forEach(function(data) {
+
+            // HTML 화면에 DB 데이터로 엘레먼트 생성
+            var col = document.createElement('div');
+            col.setAttribute('class', 'col-lg-3 col-sm-5');
+            var item = document.createElement('div');
+            item.setAttribute('class', 'recipe-item');
+            var a = document.createElement("a");
+            var href = "recipe.html?key=" + data.key;// GET 메소드로 주소 보내기
+            a.setAttribute("href", href);
+
+            // 사용하는 템플릿 이미지 사이즈 조정이 유동식이라 style로 사이즈 맞추는게 어려워요.
+            // 추후에 DB에 사진을 넣을 때 362*352 사이즈로 잘라 넣어 줘야 해요
+            var preview = document.createElement("img");
+            preview.setAttribute("src", data.val().img); // 미리보기 이미지 URL
+
+            var ritext = document.createElement("div");
+            ritext.setAttribute("class", "ri-text");
+
+            var catname = document.createElement("div");
+            catname.setAttribute("class", "cat-name");
+            catname.innerHTML = data.val().category;
+
+            var name_link = document.createElement("a");
+            name_link.setAttribute("href", href); // a.setAttribute("href", "#")랑 같은 주소 넣어주세요
+
+            var title = document.createElement("h4");
+            title.innerHTML = data.val().name; // 레시피 이름
+
+            var p = document.createElement("p");
+            p.innerHTML = data.val().description_origin; // 레시피 요약 설명
+
+            //***** 계층 관계대로 붙여주세요
             addingSectionRow[0].appendChild(col).appendChild(item).appendChild(a);
             a.appendChild(preview);
             item.appendChild(ritext).appendChild(catname);
