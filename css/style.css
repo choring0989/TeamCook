@@ -1485,11 +1485,11 @@ ol {
 	display: flex;
 }
 .recipe-top .container-fluid {
-
+	text-align: center;
 }
 
 .recipe-top .container-fluid .recipe-title {
-	margin-bottom: 90px;
+	margin-bottom: 40px;
 }
 
 .recipe-top .container-fluid .recipe-title span {
@@ -1561,7 +1561,6 @@ ol {
 	padding: 15px 57px;
 	margin-top: 20px;
 	margin-bottom: 38px;
-	float: right;
 }
 
 .recipe-top .container-fluid .recipe-btn2 a {
@@ -2806,4 +2805,10 @@ ol {
 .blog-section .blog-pic img{
 	display : block;
     margin : auto;
+}
+
+#f_image{
+	max-width: 750px;
+	max-height: 400px;
+	margin: auto;
 }
