@@ -10,7 +10,7 @@
 	display:block;
 	vertical-align:middle;
 	float:right;
-	padding:.438em .625em;
+	padding:.5em .75em;
 	line-height:1.125em
 }
 .slicknav_btn .slicknav_icon-bar+.slicknav_icon-bar {
@@ -86,7 +86,7 @@
 	overflow:hidden;
     padding:0;
     float:right;
-    width:90px;
+    width:100px;
 }
 .slicknav_menu .slicknav_icon-bar {
 	background-color:#fff

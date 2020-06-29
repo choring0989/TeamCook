@@ -21,317 +21,324 @@
 </head>
 
 <body>
-<!-- Page Preloder -->
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-app.js"></script>
+
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.1.0/firebase-database.js"></script>
+
+    <!-- Page Preloder -->
     <div id="preloder">
         <div class="loader"></div>
     </div>
-<!-- Header Section Begin -->
-<header class="header-section">
-    <div class="row container-fluid" style="flex-wrap:nowrap; margin-left:0px;">
-        <div class="logo">
-            <a href="./index.html"><img src="img/little-logo.png" alt=""></a>
+    <!-- Header Section Begin -->
+    <header class="header-section">
+        <div class="row container-fluid" style="flex-wrap:nowrap; margin-left:0px;">
+            <div class="logo">
+                <a href="./index.html"><img src="img/little-logo.png" alt=""></a>
+            </div>
+            <div class="nav-right nav-custom">
+                <form action="search.html" class="filter-search" method="GET">
+                    <input type="text" placeholder="Search recipe" class="search-box" name="input" />
+                    <button type="submit" id="search-btn"><i class="fa fa-search"></i></button>
+                </form>
+            </div>
+            <div id="mobile-menu-wrap" style="overflow: hidden; margin-right: 4px; margin-top: 20px;">
+            </div>
+            <div class="nav-menu">
+                <nav class="main-menu mobile-menu">
+                    <ul>
+                        <li class="active"><a href="#">Home</a></li>
+                        <li><a href="#">Category</a>
+                            <ul class="sub-menu">
+                                <li><a href="search.html?input=Dinner">Dinner</a></li>
+                                <li><a href="search.html?input=Sweet">Sweet</a></li>
+                                <li><a href="search.html?input=Noodle">Noodle</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="all-recipes.html">All Rcps</a></li>
+                        <li><a href="example-main.html">recommend</a></li>
+                    </ul>
+                </nav>
+            </div>
         </div>
-        <div class="nav-right nav-custom">
-            <form action="search.html" class="filter-search" method="GET">
-                <input type="text" placeholder="Search recipe" class="search-box" name="input"/>
-                <button type="submit" id="search-btn"><i class="fa fa-search"></i></button>
-            </form>
-        </div>
-        <div id="mobile-menu-wrap" style="overflow: hidden; margin-right: 4px; margin-top: 20px;">
-        </div>
-        <div class="nav-menu">
-            <nav class="main-menu mobile-menu">
-                <ul>
-                    <li class="active"><a href="#">Home</a></li>
-                    <li><a href="#">Pages</a>
-                        <ul class="sub-menu">
-                            <li><a href="categories.html">Categories</a></li>
-                            <li><a href="recipe.html">Recipe</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="recipe.html">Recipes</a></li>
-                    <li><a href="categories.html">Best Of</a></li>
-                </ul>
-            </nav>
-        </div>
-    </div>
-</header>
-<!-- Header End -->
-<!-- Hero Search Section Begin -->
-<div class="hero-search set-bg" data-setbg="img/search-bg.jpg"
-    style="width: 85.7%; margin: auto; margin-bottom: 30px;">
-    <div class="container">
-        <div class="filter-table">
-            <h2 id="search-result-header">Wellcome!</h2>
-        </div>
-    </div>
-</div>
-<!-- Hero Search Section End -->
-
-    <!-- Page Top Recipe Section Begin -->
-    <section class="page-top-recipe">
+    </header>
+    <!-- Header End -->
+    <!-- Hero Search Section Begin -->
+    <div class="hero-search set-bg" data-setbg="img/search-bg.jpg"
+        style="width: 85.7%; margin: auto; margin-bottom: 30px;">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-6 order-lg-2">
-                    <div class="pt-recipe-item large-item">
-                        <div class="pt-recipe-img set-bg" data-setbg="img/recipe-3.jpg">
-                            <i class="fa fa-plus"></i>
-                        </div>
-                        <div class="pt-recipe-text">
-                            <span>March 10, 2019</span>
-                            <h3>Cannellini Aglio e Olio with Salmon</h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 order-lg-1">
-                    <div class="pt-recipe-item">
-                        <div class="pt-recipe-img set-bg" data-setbg="img/recipe-1.jpg">
-                            <i class="fa fa-plus"></i>
-                        </div>
-                        <div class="pt-recipe-text">
-                            <h4>Raw Vegan Carrot Cake Bites with Avocado</h4>
-                        </div>
-                    </div>
-                    <div class="pt-recipe-item">
-                        <div class="pt-recipe-img set-bg" data-setbg="img/recipe-2.jpg">
-                            <i class="fa fa-plus"></i>
-                        </div>
-                        <div class="pt-recipe-text">
-                            <h4>One Pot Weeknight Lasagna Soup Recipe</h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 order-lg-3">
-                    <div class="pt-recipe-item">
-                        <div class="pt-recipe-img set-bg" data-setbg="img/recipe-4.jpg">
-                            <i class="fa fa-plus"></i>
-                        </div>
-                        <div class="pt-recipe-text">
-                            <h4>Beef Burger with French Fries and Salad</h4>
-                        </div>
-                    </div>
-                    <div class="pt-recipe-item">
-                        <div class="pt-recipe-img set-bg" data-setbg="img/recipe-5.jpg">
-                            <i class="fa fa-plus"></i>
-                        </div>
-                        <div class="pt-recipe-text">
-                            <h4>Raspberry Pancakes with Honey and Butter</h4>
-                        </div>
-                    </div>
-                </div>
+            <div class="filter-table">
+                <h2 id="search-result-header">Wellcome!</h2>
             </div>
         </div>
-    </section>
-    <!-- Page Top Recipe Section End -->
+    </div>
+    <!-- Hero Search Section End -->
+    <!-- Recipe Section Begin -->
+    <section class="recipe-section spad" style="padding-bottom: 0px;">
+        <div class="container">
+            <div class="categoryName">
+                <h3>Main Food</h3>
+            </div>
+            <div class="row">
+            </div>
+        </div>
 
-    <!-- Top Recipe Section Begin -->
-    <section class="top-recipe spad">
-        <div class="section-title">
-            <h5>Top Recipes this Week</h5>
-        </div>
-        <div class="container po-relative">
-            <div class="plus-icon">
-                <i class="fa fa-plus"></i>
+        <div class="container">
+            <div class="categoryName">
+                <h3>Sweet at home</h3>
             </div>
             <div class="row">
-                <div class="col-lg-6">
-                    <div class="top-recipe-item large-item">
-                        <div class="top-recipe-img set-bg" data-setbg="img/top-recipe/recipe-1.jpg">
-                            <i class="fa fa-plus"></i>
-                        </div>
-                        <div class="top-recipe-text">
-                            <div class="cat-name">Desert</div>
-                            <a href="#">
-                                <h4>One Pot Weeknight Lasagna Soup Recipe</h4>
-                            </a>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                                ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing
-                                elit, sed do eiusmod tempor incididunt ut labore.</p>
-                        </div>
-                    </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="categoryName">
+                <h3>Korean Food</h3>
+            </div>
+            <div class="row">
+            </div>
+        </div>
+
+        <script>
+            // Your web app's Firebase configuration
+            var firebaseConfig = {
+                apiKey: "AIzaSyA_YlPiT7ZSrxRlYdfDzVH4nG0MspsdHts",
+                authDomain: "team-cook.firebaseapp.com",
+                databaseURL: "https://team-cook.firebaseio.com",
+                projectId: "team-cook",
+                storageBucket: "team-cook.appspot.com",
+                messagingSenderId: "648033990336",
+                appId: "1:648033990336:web:006565376777c3cbab9f25",
+                measurementId: "G-0713Y1K789"
+            };
+            // Initialize Firebase
+            firebase.initializeApp(firebaseConfig);
+            var rootRef = firebase.database().ref();
+
+            var database = firebase.database();
+
+            var addingSectionTop = document.getElementsByClassName("recipe-section spad")[0];
+            var addingSectionRow = addingSectionTop.getElementsByClassName("row");
+
+            recipeTagList("Main Food", 0);
+            recipeTagList("Sweet", 1);
+            recipeTagList("Korean Food", 2);
+
+            function recipeTagList(params, row) {
+                var result = rootRef.child('recipes').orderByChild('tags/' + params).equalTo(true).limitToLast(3);
+                result.once('value', function (snapshot) {
+                    snapshot.forEach(function (data) {
+
+                        // HTML 화면에 DB 데이터로 엘레먼트 생성
+                        var col = document.createElement('div');
+                        col.setAttribute('class', 'col-lg-4 col-sm-6');
+                        var item = document.createElement('div');
+                        item.setAttribute('class', 'recipe-item');
+                        var a = document.createElement("a");
+                        var href = "recipe.html?key=" + data.key;// GET 메소드로 주소 보내기
+                        a.setAttribute("href", href);
+
+                        // 사용하는 템플릿 이미지 사이즈 조정이 유동식이라 style로 사이즈 맞추는게 어려워요.
+                        // 추후에 DB에 사진을 넣을 때 362*352 사이즈로 잘라 넣어 줘야 해요
+                        var preview = document.createElement("img");
+                        preview.setAttribute("src", data.val().img); // 미리보기 이미지 URL
+
+                        var ritext = document.createElement("div");
+                        ritext.setAttribute("class", "ri-text");
+
+                        var catname = document.createElement("div");
+                        catname.setAttribute("class", "cat-name");
+                        catname.innerHTML = data.val().category;
+
+                        var name_link = document.createElement("a");
+                        name_link.setAttribute("href", href); // a.setAttribute("href", "#")랑 같은 주소 넣어주세요
+
+                        var title = document.createElement("h4");
+                        title.innerHTML = data.val().name; // 레시피 이름
+
+                        var p = document.createElement("p");
+                        p.innerHTML = data.val().description_origin; // 레시피 요약 설명
+
+                        //***** 계층 관계대로 붙여주세요
+                        addingSectionRow[row].appendChild(col).appendChild(item).appendChild(a);
+                        a.appendChild(preview);
+                        item.appendChild(ritext).appendChild(catname);
+                        ritext.appendChild(name_link).appendChild(title);
+                        ritext.appendChild(p);
+                    });
+                });
+            }
+        </script>
+        <br><br><br><br><br>
+
+
+        <!-- Cooking with chef Section Begin -->
+        <section class="top-recipe spad" style="padding-bottom: 0px;">
+            <div class="section-title">
+                <h5>Cook with chef</h5>
+            </div>
+            <div class="container po-relative">
+                <div class="plus-icon">
+                    <i class="fa fa-plus"></i>
                 </div>
-                <div class="col-lg-6">
-                    <div class="top-recipe-item">
-                        <div class="row">
-                            <div class="col-sm-4">
-                                <div class="top-recipe-img set-bg" data-setbg="img/top-recipe/recipe-2.jpg">
-                                    <i class="fa fa-plus"></i>
-                                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="top-recipe-item large-item">
+                            <div class="top-recipe-img set-bg">
+                                <iframe width=100% height=100% src="https://www.youtube.com/embed/QkbqRWIqhZI"
+                                    frameborder="0"
+                                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                    allowfullscreen></iframe>
+
+                                <i class="fa fa-plus"></i>
                             </div>
-                            <div class="col-sm-8">
-                                <div class="top-recipe-text">
-                                    <div class="cat-name">Vegan</div>
-                                    <a href="#">
-                                        <h4>One Pot Weeknight Lasagna Soup Recipe</h4>
-                                    </a>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna aliqua.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="top-recipe-item">
-                        <div class="row">
-                            <div class="col-sm-4">
-                                <div class="top-recipe-img set-bg" data-setbg="img/top-recipe/recipe-3.jpg">
-                                    <i class="fa fa-plus"></i>
-                                </div>
-                            </div>
-                            <div class="col-sm-8">
-                                <div class="top-recipe-text">
-                                    <div class="cat-name">Meat lover</div>
-                                    <a href="#">
-                                        <h4>Veggie soup with Mushrooms</h4>
-                                    </a>
-                                    <p>Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                                        magna aliqua. Lorem ipsum dolor sit amet, consectetur.</p>
-                                </div>
+                            <div class="top-recipe-text">
+                                <div class="cat-name">brunch</div>
+                                <a href="#">
+                                    <h4>5 ways to make Eggs benedict</h4>
+                                </a>
+                                <p>It's perfect for breakfast, brunch and any other time. We'll show you the 5 awesome
+                                    ways to make eggs benedict.</p>
                             </div>
                         </div>
                     </div>
-                    <div class="top-recipe-item">
-                        <div class="row">
-                            <div class="col-sm-4">
-                                <div class="top-recipe-img set-bg" data-setbg="img/top-recipe/recipe-4.jpg">
-                                    <i class="fa fa-plus"></i>
+                    <div class="col-lg-6">
+                        <div class="top-recipe-item">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="top-recipe-img set-bg">
+                                        <iframe width=100% height=100% src="https://www.youtube.com/embed/3Zt4eQZZz9I"
+                                            frameborder="0"
+                                            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                            allowfullscreen></iframe>
+                                        <i class="fa fa-plus"></i>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-sm-8">
-                                <div class="top-recipe-text">
-                                    <div class="cat-name">Desert</div>
-                                    <a href="#">
-                                        <h4>Caramel Ice Cream with Berries</h4>
-                                    </a>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna aliqua.</p>
+                                <div class="col-sm-8">
+                                    <div class="top-recipe-text">
+                                        <div class="cat-name">Chinese</div>
+                                        <a href="#">
+                                            <h4>Try Menbowsha at home</h4>
+                                        </a>
+                                        <p>Do you think Menbowsha is expensive ? Eat menbowsha as many as you want at
+                                            home.</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="top-recipe-item">
-                        <div class="row">
-                            <div class="col-sm-4">
-                                <div class="top-recipe-img set-bg" data-setbg="img/top-recipe/recipe-5.jpg">
-                                    <i class="fa fa-plus"></i>
+                        <div class="top-recipe-item">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="top-recipe-img set-bg">
+                                        <iframe width=100% height=100% src="https://www.youtube.com/embed/2AdgkR4oGQc"
+                                            frameborder="0"
+                                            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                            allowfullscreen></iframe>
+                                        <i class="fa fa-plus"></i>
+                                    </div>
+                                </div>
+                                <div class="col-sm-8">
+                                    <div class="top-recipe-text">
+                                        <div class="cat-name">Pasta</div>
+                                        <a href="#">
+                                            <h4>Just 5 ingredients for aglio e olio</h4>
+                                        </a>
+                                        <p>You need only 5 ingredients for aglio e olio! Super easy an quick way to cook
+                                            pasta.</p>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-sm-8">
-                                <div class="top-recipe-text">
-                                    <div class="cat-name">Desert</div>
-                                    <a href="#">
-                                        <h4>Freash Octopuse with lime juice</h4>
-                                    </a>
-                                    <p>Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                                        magna aliqua. Lorem ipsum dolor sit amet, consectetur.</p>
+                        </div>
+                        <div class="top-recipe-item">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="top-recipe-img set-bg">
+                                        <iframe width=100% src="https://www.youtube.com/embed/L9z69Mfi1kg"
+                                            frameborder="0"
+                                            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                            allowfullscreen></iframe>
+                                        <i class="fa fa-plus"></i>
+                                    </div>
+                                </div>
+                                <div class="col-sm-8">
+                                    <div class="top-recipe-text">
+                                        <div class="cat-name">Meat lover</div>
+                                        <a href="#">
+                                            <h4>Meatballs</h4>
+                                        </a>
+                                        <p>Are you looking for the dinner recipe with children ? Here it is. MEATBALLS !
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="top-recipe-item">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="top-recipe-img set-bg">
+                                        <iframe width=100% src="https://www.youtube.com/embed/0xh8YX1otHU"
+                                            frameborder="0"
+                                            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                            allowfullscreen></iframe>
+                                        <i class="fa fa-plus"></i>
+                                    </div>
+                                </div>
+                                <div class="col-sm-8">
+                                    <div class="top-recipe-text">
+                                        <div class="cat-name">Meat lover</div>
+                                        <a href="#">
+                                            <h4>Beef Wellington</h4>
+                                        </a>
+                                        <p>Gordon James Ramsay Jr's signature menu! Try luxurious steak at home.</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     </section>
     <!-- Top Recipe Section End -->
 
-    <!-- Categories Filter Section Begin -->
-    <div class="categories-filter-section spad">
+    <!-- Similar Recipe Section Begin -->
+    <section class="similar-recipe spad">
+        <h3>Recent Recipes</h3>
         <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <div class="filter-item">
-                        <ul>
-                            <li class="active" data-filter="*">Vegetarian</li>
-                            <li data-filter=".mostpopular">Most popular</li>
-                            <li data-filter=".meatlover">Meat Lover</li>
-                            <li data-filter=".glutenfree">Gluten Free</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="cf-filter" id="category-filter">
-                <div class="cf-item mix all mostpopular">
-                    <div class="cf-item-pic">
-                        <img src="img/cate-filter/cate-filter-1.jpg" alt="">
-                    </div>
-                    <div class="cf-item-text">
-                        <h5>Sunday Brunch: Spaghetti and Eggs Recipe</h5>
-                    </div>
-                </div>
-                <div class="cf-item mix all mostpopular">
-                    <div class="cf-item-pic">
-                        <img src="img/cate-filter/cate-filter-2.jpg" alt="">
-                    </div>
-                    <div class="cf-item-text">
-                        <h5>Sunday Brunch: Spaghetti and Eggs Recipe</h5>
-                    </div>
-                </div>
-                <div class="cf-item mix all meatlover mostpopular">
-                    <div class="cf-item-pic">
-                        <img src="img/cate-filter/cate-filter-3.jpg" alt="">
-                    </div>
-                    <div class="cf-item-text">
-                        <h5>Sunday Brunch: Spaghetti and Eggs Recipe</h5>
-                    </div>
-                </div>
-                <div class="cf-item mix all meatlover">
-                    <div class="cf-item-pic glutenfree">
-                        <img src="img/cate-filter/cate-filter-4.jpg" alt="">
-                    </div>
-                    <div class="cf-item-text">
-                        <h5>Sunday Brunch: Spaghetti and Eggs Recipe</h5>
-                    </div>
-                </div>
-                <div class="cf-item mix all meatlover glutenfree">
-                    <div class="cf-item-pic">
-                        <img src="img/cate-filter/cate-filter-5.jpg" alt="">
-                    </div>
-                    <div class="cf-item-text">
-                        <h5>Sunday Brunch: Spaghetti and Eggs Recipe</h5>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Categories Filter Section End -->
-
-    <!-- Feature Recipe Section Begin -->
-    <section class="feature-recipe">
-        <div class="section-title">
-            <h5>Featured Recipes</h5>
-        </div>
-        <div class="container po-relative">
-            <div class="plus-icon">
-                <i class="fa fa-plus"></i>
-            </div>
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="fr-item">
-                        <div class="fr-item-img">
-                            <img src="img/feature-1.jpg" alt="">
-                        </div>
-                        <div class="fr-item-text">
-                            <h4>Sunday Brunch: Spaghetti and Eggs Recipe</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                                ut labore et dolore magna aliqua.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="fr-item">
-                        <div class="fr-item-img">
-                            <img src="img/feature-2.jpg" alt="">
-                        </div>
-                        <div class="fr-item-text">
-                            <h4>Sunday Brunch: Spaghetti and Eggs Recipe</h4>
-                            <p>Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-                                aliqua. Quis ipsum suspendisse ultrices gravida.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <div class="row"></div>
         </div>
     </section>
-    <!-- Feature Recipe Section End -->
+    <!-- Similar Recipe Section End -->
+
+    <script>
+        var addingSectionTop_ = document.getElementsByClassName("similar-recipe spad")[0];
+        var addingSectionRow_ = addingSectionTop_.getElementsByClassName("row");
+
+        var recentPostsRef = firebase.database().ref('recipes/').orderByKey().limitToLast(4);
+        recentPostsRef.on('child_added', function (data) {
+            var col = document.createElement("div");
+            col.setAttribute("class", "col-lg-3 col-md-6");
+            var item = document.createElement('div');
+            item.setAttribute('class', 'similar-item');
+            var a = document.createElement("a");
+            var href = "recipe.html?key=" + data.key;
+            a.setAttribute("href", href);
+
+            var preview = document.createElement("img");
+            preview.setAttribute("src", data.val().img);
+
+            var smrtext = document.createElement("div");
+            smrtext.setAttribute("class", "ri-similar-text");
+
+            //***** 계층 관계대로 붙여주세요
+            addingSectionRow_[0].appendChild(col).appendChild(item).appendChild(a);
+            a.appendChild(preview);
+            item.appendChild(smrtext)
+        });
+    </script>
 
     <!-- Footer Section Begin -->
     <footer class="footer-section">
@@ -344,9 +351,9 @@
                                 <img src="img/footer-logo.png" alt="">
                             </a>
                         </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo
-                            viverra maecenas accumsan lacus vel facilisis.</p>
+                        <p>2020 Gachon University Web Programming Term Project.<br>
+                            Contributors: Kim Sangmin / Ko Haesol / Park Taehwan / Lee Ji An
+                        </p>
                     </div>
                 </div>
                 <div class="col-lg-6 offset-lg-1">
@@ -368,25 +375,18 @@
                 <div class="col-lg-12">
                     <div class="copyright-text">
                         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        Copyright &copy;
+                        <script>document.write(new Date().getFullYear());</script> All rights reserved | This
+                        template
+                        is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com"
+                            target="_blank">Colorlib</a>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                     </div>
                 </div>
             </div>
         </div>
     </footer>
     <!-- Footer Section End -->
-
-    <!-- Search model -->
-	<div class="search-model">
-		<div class="h-100 d-flex align-items-center justify-content-center">
-			<div class="search-close-switch">+</div>
-			<form class="search-model-form">
-				<input type="text" id="search-input" placeholder="Search here.....">
-			</form>
-		</div>
-	</div>
-	<!-- Search model end -->
 
     <!-- Js Plugins -->
     <script src="js/jquery-3.3.1.min.js"></script>
@@ -396,4 +396,5 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <script src="js/mixitup.min.js"></script>
     <script src="js/main.js"></script>
 </body>
+
 </html>

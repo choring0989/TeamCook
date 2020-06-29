@@ -66,112 +66,131 @@
         </div>
     </header>
     <!-- Header End -->
-
     <!-- Hero Search Section Begin -->
     <div class="hero-search set-bg" data-setbg="img/search-bg.jpg"
         style="width: 85.7%; margin: auto; margin-bottom: 30px;">
         <div class="container">
             <div class="filter-table">
-                <h2 id="search-result-header">loading...</h2>
+                <h2 id="search-result-header">Today's recommended recipe for you!</h2>
             </div>
         </div>
     </div>
     <!-- Hero Search Section End -->
 
-    <!-- Single Recipe Section Begin -->
-    <section class="single-page-recipe spad" style="margin: 0px 40px 0px 40px;">
-        <div class="recipe-top">
+    <!-- Blog Section Begin -->
+    <section class="blog-section spad">
+        <div class="blog-pic">
             <div class="container-fluid">
-                <div class="recipe-title">
-                    <span>By
-                        <a href="#">temp Author</a>
-                    </span>
-                    <span>| temp 23 Jun 2020</span>
-                    <h2 id="name"></h2>
-                </div>
-                <img id="f_image" src="" alt="">
-                <div btn-box>
-                    <div class="recipe-btn">
-                        <a href="#">Print This Recipe</a>
-                    </div>
-                    <div class="recipe-btn2">
-                        <a href="#">Add To Bookmark</a>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <img src="img/Kimchi Bokkembap.jpg" alt="">
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-5">
-                <div class="ingredients-item">
-                    <div class="ingredient-list">
-                        <div class="list-item">
-                            <h5>Ingredients</h5>
-                            <div class="salad-list">
-                                <h6 id="main">Main</h6>
-                                <div id="list1"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="recipe-middle">
-            <div class="calories">
-                <div class="calo-title">
-                    <h6>Total Calories</h6>
-                    <span id="calor"></span>
-                </div>
-                <ul>
-                    <li id="Ssize"></li>
-                </ul>
-            </div>
-            <div class="nutrition-fact">
-                <div class="nutri-title">
-                    <h6>Nutrition Facts</h6>
-                    <span id="Tsize"></span>
-                </div>
-                <ul>
-                    <li id="fat"></li>
-                    <li id="carb"></li>
-                    <li id="prot"></li>
-                </ul>
             </div>
         </div>
         <div class="container">
             <div class="row">
-                <div class="col-lg-7">
-                    <div class="recipe-right">
-                        <div class="instruction-list">
-                            <h3>Instructions</h3>
-                            <div id="cok_order"></div>
+                <div class="col-lg-12">
+                    <div class="blog-text">
+                        <div class="blog-title">
+                            <span>Today's menu</span>
+                            <h2 id="name"></h2>
+                            <ul id="name3">
+                            </ul>
                         </div>
-                    </div>
-                </div>
-                <div class="col-lg-5">
-                    <div class="ingredients-item">
-                        <div class="ingredient-list">
-                            <div class="list-item">
-                                <h5>What is the tag of this recipe?</h5>
-                                <div class="salad-list">
-                                    <h6>Related TAGS</h6>
-                                    <ul id="tags">
-                                    </ul>
-                                </div>
+                        <div class="blog-desc">
+                            <div class="blog-quote">
+                                <i class="fa fa-quote-left"></i>
+                                <p id="name1"> </p>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="recipe-right" style="min-width: 700px;">
-                    <div class="notes">
-                        <h5>Tip/Caution</h5><br>
-                        <div class="notes-item">
-                            <span>i</span>
-                            <p id="tips"></p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- Single Recipe Section End -->
+    <!-- Blog Section End -->
+
+    <section class="single-page-recipe spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5">
+                    <div class="ingredients-item">
+                        <div class="intro-item">
+                            <img src="img/Kimchi Bokkembap.jpg" alt="">
+                            <h2>Kimchi Bokkembap</h2>
+                            <div class="rating">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+                            <div class="reviews">4.9 from 25 reviews</div>
+                            <div class="recipe-time">
+                                <ul>
+                                    <li>Prep time: <span>10 min</span></li>
+                                    <li>Cook time: <span>15 min</span></li>
+                                    <li>Yield: <span>1</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="ingredient-list">
+                            <div class="recipe-btn">
+                                <a href="#">Print Recipe</a>
+                                <a href="#" class="black-btn">Pin Recipe</a>
+                            </div>
+                            <div class="list-item">
+                                <h5>Ingredients</h5>
+                                <div class="salad-list">
+                                    <div id="list1"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="nutrition-fact-ct">
+                        <div class="nutri-title">
+                            <h6>Nutrition Facts</h6>
+                            <span>Serves 1</span>
+                        </div>
+                        <ul>
+                            <li>Total Fat : 12.37g</li>
+                            <li>Cholesterol : 0%</li>
+                            <li>Chalories: 446</li>
+                        </ul>
+                        <div class="video">
+                            <iframe width="100%" height="100%" src="https://www.youtube.com/embed/eIo2BaE6LxI"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    <div class="recipe-right">
+                        <div class="recipe-desc">
+                            <h3>Common Sense of dish</h3>
+                            <p>Kimchi fried rice is one of the most popular dishes in Korea and is a kind of fried rice,
+                                which is a dish cooked in a frying pan using kimchi and rice as its main ingredients.
+                            </p>
+                        </div>
+                        <div class="instruction-list">
+                            <h3>Instruction</h3>
+                            <div id="cok_order"></div>
+                        </div>
+                        <div class="notes">
+                            <h3>Tip/Caution</h3>
+                            <div class="notes-item">
+                                <span>i</span>
+                                <p id="name2"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
 
     <script>
         var firebaseConfig = {
@@ -187,25 +206,19 @@
 
         // Firebase 활성화
         firebase.initializeApp(firebaseConfig);
-
-        // 현재 URL 가져오기
-        var url = location.href;
-        // get 파라미터 값을 가져올 수 있는 ? 를 기점으로 slice 한 후 split 으로 나눔
-        var key = (url.slice(url.indexOf('?') + 1, url.length)).split('=')[1];
-        console.log(key);
-
-        //레시피 가져오기
-        var menu_ref = firebase.database().ref("recipes/" + key);
+        var menu_ref = firebase.database().ref("recipes/" + "-MAuM2Z5CKIKNPPzR_zZ");
         menu_ref.once("value").then(function (data) {
             console.log(data.val().name);
 
             var menu_name = document.getElementById("name"); //메뉴이름
             menu_name.innerHTML = data.val().name;
-            document.getElementById('search-result-header').innerHTML = data.val().name;
 
-            //메뉴 이미지
-            var fimage = document.getElementById("f_image");
-            fimage.src = data.val().img_Orign;
+            var menu_description = document.getElementById("name1"); //메뉴설명
+            menu_description.innerHTML = data.val().description_origin;
+
+            var menu_tip = document.getElementById("name2"); //메뉴설명
+            menu_tip.innerHTML = data.val().tip;
+
 
             //재료목록
             ingredients = data.val().Ingredients[0];
@@ -216,24 +229,6 @@
             str += "</ul>";
             document.getElementById("list1").innerHTML = str;
 
-            //칼로리 등
-            var calor = document.getElementById("calor");
-            calor.innerHTML = data.val().Nutr[0];
-
-            var calor = document.getElementById("Ssize");
-            calor.innerHTML = data.val().Nutr[5];
-
-            var calor = document.getElementById("Tsize");
-            calor.innerHTML = data.val().Nutr[1];
-
-            var calor = document.getElementById("fat");
-            calor.innerHTML = data.val().Nutr[2];
-
-            var calor = document.getElementById("carb");
-            calor.innerHTML = data.val().Nutr[3];
-
-            var calor = document.getElementById("prot");
-            calor.innerHTML = data.val().Nutr[4];
             //요리순서
             cooking_order = data.val().cooking_order[0];
             var str2 = "<ul>"
@@ -244,62 +239,55 @@
             });
             str2 += "</ul>";
             document.getElementById("cok_order").innerHTML = str2;
-
-            //관련태그
-            var n = data.val().tags;
-
-            tags = Object.keys(n);//여기 고쳐놨어요!
-            var str3 = "<ul>"
-            tags.forEach(function (tag) {
-                str3 += "<li>" + tag + "</li>";
-            });
-            str3 += "</ul>";
-            document.getElementById("tags").innerHTML = str3;
-
-            // 팁 출력
-            var tips = document.getElementById("tips");
-            tips.innerHTML = data.val().tip;
         });
     </script>
 
+
+
     <!-- Similar Recipe Section Begin -->
     <section class="similar-recipe spad">
-        <h3>Recent Recipes</h3>
         <div class="container">
-            <div class="row"></div>
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="similar-item">
+                        <a href="#"><img src="img/cat-feature/small-7.jpg" alt=""></a>
+                        <div class="similar-text">
+                            <div class="cat-name">Vegan</div>
+                            <h6>Italian Tiramisu with Coffe</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="similar-item">
+                        <a href="#"><img src="img/cat-feature/small-6.jpg" alt=""></a>
+                        <div class="similar-text">
+                            <div class="cat-name">Vegan</div>
+                            <h6>Dry Cookies with Corn</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="similar-item">
+                        <a href="#"><img src="img/cat-feature/small-5.jpg" alt=""></a>
+                        <div class="similar-text">
+                            <div class="cat-name">Vegan</div>
+                            <h6>Asparagus with Pork Loin and Vegetables</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="similar-item">
+                        <a href="#"><img src="img/cat-feature/small-4.jpg" alt=""></a>
+                        <div class="similar-text">
+                            <div class="cat-name">Vegan</div>
+                            <h6>Smoked Salmon mini Sandwiches with Onion</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
     <!-- Similar Recipe Section End -->
-
-    <script>
-        var addingSectionTop = document.getElementsByClassName("similar-recipe spad")[0];
-        var addingSectionRow = addingSectionTop.getElementsByClassName("row");
-        accessDB();
-
-        function accessDB() {
-            var recentPostsRef = firebase.database().ref('recipes/').orderByKey().limitToLast(3);
-            recentPostsRef.on('child_added', function (data) {
-                var col = document.createElement("div");
-                col.setAttribute("class", "col-lg-3 col-md-6");
-                var item = document.createElement('div');
-                item.setAttribute('class', 'similar-item');
-                var a = document.createElement("a");
-                var href = "recipe.html?key=" + data.key;
-                a.setAttribute("href", href);
-
-                var preview = document.createElement("img");
-                preview.setAttribute("src", data.val().img);
-
-                var smrtext = document.createElement("div");
-                smrtext.setAttribute("class", "ri-similar-text");
-
-                //***** 계층 관계대로 붙여주세요
-                addingSectionRow[0].appendChild(col).appendChild(item).appendChild(a);
-                a.appendChild(preview);
-                item.appendChild(smrtext)
-            });
-        }
-    </script>
 
     <!-- Footer Section Begin -->
     <footer class="footer-section">
@@ -347,6 +335,7 @@
         </div>
     </footer>
     <!-- Footer Section End -->
+
     <!-- Search model -->
     <div class="search-model">
         <div class="h-100 d-flex align-items-center justify-content-center">

@@ -33,48 +33,49 @@
     <div id="preloder">
         <div class="loader"></div>
     </div>
-<!-- Header Section Begin -->
-<header class="header-section">
-    <div class="row container-fluid" style="flex-wrap:nowrap; margin-left:0px;">
-        <div class="logo">
-            <a href="./index.html"><img src="img/little-logo.png" alt=""></a>
+    <!-- Header Section Begin -->
+    <header class="header-section">
+        <div class="row container-fluid" style="flex-wrap:nowrap; margin-left:0px;">
+            <div class="logo">
+                <a href="./index.html"><img src="img/little-logo.png" alt=""></a>
+            </div>
+            <div class="nav-right nav-custom">
+                <form action="search.html" class="filter-search" method="GET">
+                    <input type="text" placeholder="Search recipe" class="search-box" name="input" />
+                    <button type="submit" id="search-btn"><i class="fa fa-search"></i></button>
+                </form>
+            </div>
+            <div id="mobile-menu-wrap" style="overflow: hidden; margin-right: 4px; margin-top: 20px;">
+            </div>
+            <div class="nav-menu">
+                <nav class="main-menu mobile-menu">
+                    <ul>
+                        <li class="active"><a href="#">Home</a></li>
+                        <li><a href="#">Category</a>
+                            <ul class="sub-menu">
+                                <li><a href="search.html?input=Dinner">Dinner</a></li>
+                                <li><a href="search.html?input=Sweet">Sweet</a></li>
+                                <li><a href="search.html?input=Noodle">Noodle</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="all-recipes.html">All Rcps</a></li>
+                        <li><a href="example-main.html">recommend</a></li>
+                    </ul>
+                </nav>
+            </div>
         </div>
-        <div class="nav-right nav-custom">
-            <form action="search.html" class="filter-search" method="GET">
-                <input type="text" placeholder="Search recipe" class="search-box" name="input"/>
-                <button type="submit" id="search-btn"><i class="fa fa-search"></i></button>
-            </form>
-        </div>
-        <div id="mobile-menu-wrap" style="overflow: hidden; margin-right: 4px; margin-top: 20px;">
-        </div>
-        <div class="nav-menu">
-            <nav class="main-menu mobile-menu">
-                <ul>
-                    <li class="active"><a href="#">Home</a></li>
-                    <li><a href="#">Pages</a>
-                        <ul class="sub-menu">
-                            <li><a href="categories.html">Categories</a></li>
-                            <li><a href="recipe.html">Recipe</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="recipe.html">Recipes</a></li>
-                    <li><a href="categories.html">Best Of</a></li>
-                </ul>
-            </nav>
+    </header>
+    <!-- Header End -->
+    <!-- Hero Search Section Begin -->
+    <div class="hero-search set-bg" data-setbg="img/search-bg.jpg"
+        style="width: 85.7%; margin: auto; margin-bottom: 30px;">
+        <div class="container">
+            <div class="filter-table">
+                <h2 id="search-result-header">Wellcome!</h2>
+            </div>
         </div>
     </div>
-</header>
-<!-- Header End -->
-<!-- Hero Search Section Begin -->
-<div class="hero-search set-bg" data-setbg="img/search-bg.jpg"
-    style="width: 85.7%; margin: auto; margin-bottom: 30px;">
-    <div class="container">
-        <div class="filter-table">
-            <h2 id="search-result-header">Wellcome!</h2>
-        </div>
-    </div>
-</div>
-<!-- Hero Search Section End -->
+    <!-- Hero Search Section End -->
 
     <!-- Recipe Section Begin -->
     <section class="recipe-section spad">
@@ -195,185 +196,106 @@
         var addingSectionRow = addingSectionTop.getElementsByClassName("row");//<section class="recipe-section spad"> 안의 row에 레시피를 넣을 거라 가져왔습니다.
 
         var counter = 0;//게시글 페이지 넘김에 쓰는 카운터
-        var oldPostID = ["-MAuMBj_9hnfWVMeLRju", ];//가장 최근에 들어온 레시피 키 값 입력...
+        var oldPostID = ["-MAvODxdlZ8BKho9aRnl",];//가장 최근에 들어온 레시피 키 값 입력...
         accessDB(1); //최초 1번 실행
 
+        // 페이지 넘기는 알고리즘 문제있음...유저가 1, 2, 3, 4페이지 순서대로 클릭하지 않을 때 시간순서로 보여지지 않음.
+        // 최신데이터 1개는 누락됨
+
         function accessDB(page) {
-            console.log("고침:"+oldPostID);
+            console.log("고침:" + oldPostID);
             counter = 0;
 
             // 페이지 넘겼을 때 이전 페이지에 있던 엘레먼트들 다 파괴
-            while(addingSectionRow[0].firstChild){
+            while (addingSectionRow[0].firstChild) {
                 addingSectionRow[0].removeChild(addingSectionRow[0].firstChild);
             }
 
-            var recentPostsRef = firebase.database().ref('recipes/').orderByKey().endAt(oldPostID[page-1]).limitToLast(8);//DB에서 최신 8개 데이터를 가져옵니다. (가장 나중에 넣은 데이터가 가장 최신 데이터입니다!)
+            var recentPostsRef = firebase.database().ref('recipes/').orderByKey().endAt(oldPostID[page - 1]).limitToLast(9);//DB에서 최신 8개 데이터를 가져옵니다. (가장 나중에 넣은 데이터가 가장 최신 데이터입니다!)
             recentPostsRef.on('child_added', function (data) {
-                if(counter == 0){
+                if (counter == 0) {
                     oldPostID.push(data.key)
                     counter++;
-                }   
-                // HTML 화면에 DB 데이터로 엘레먼트 생성
-                var col = document.createElement('div');
-                col.setAttribute('class', 'col-lg-3 col-sm-5');
-                var item = document.createElement('div');
-                item.setAttribute('class', 'recipe-item');
-                var a = document.createElement("a");
-                var href = "recipe.html?key=" + data.key;// GET 메소드로 주소 보내기
-                a.setAttribute("href", href);
+                }
+                else {
+                    // HTML 화면에 DB 데이터로 엘레먼트 생성
+                    var col = document.createElement('div');
+                    col.setAttribute('class', 'col-lg-3 col-sm-5');
+                    var item = document.createElement('div');
+                    item.setAttribute('class', 'recipe-item');
+                    var a = document.createElement("a");
+                    var href = "recipe.html?key=" + data.key;// GET 메소드로 주소 보내기
+                    a.setAttribute("href", href);
 
-                // 사용하는 템플릿 이미지 사이즈 조정이 유동식이라 style로 사이즈 맞추는게 어려워요.
-                // 추후에 DB에 사진을 넣을 때 362*352 사이즈로 잘라 넣어 줘야 해요
-                var preview = document.createElement("img");
-                preview.setAttribute("src", data.val().img); // 미리보기 이미지 URL
+                    // 사용하는 템플릿 이미지 사이즈 조정이 유동식이라 style로 사이즈 맞추는게 어려워요.
+                    // 추후에 DB에 사진을 넣을 때 362*352 사이즈로 잘라 넣어 줘야 해요
+                    var preview = document.createElement("img");
+                    preview.setAttribute("src", data.val().img); // 미리보기 이미지 URL
 
-                var ritext = document.createElement("div");
-                ritext.setAttribute("class", "ri-text");
+                    var ritext = document.createElement("div");
+                    ritext.setAttribute("class", "ri-text");
 
-                var catname = document.createElement("div");
-                catname.setAttribute("class", "cat-name");
-                catname.innerHTML = data.val().category;
+                    var catname = document.createElement("div");
+                    catname.setAttribute("class", "cat-name");
+                    catname.innerHTML = data.val().category;
 
-                var name_link = document.createElement("a");
-                name_link.setAttribute("href", href); // a.setAttribute("href", "#")랑 같은 주소 넣어주세요
+                    var name_link = document.createElement("a");
+                    name_link.setAttribute("href", href); // a.setAttribute("href", "#")랑 같은 주소 넣어주세요
 
-                var title = document.createElement("h4");
-                title.innerHTML = data.val().name; // 레시피 이름
+                    var title = document.createElement("h4");
+                    title.innerHTML = data.val().name; // 레시피 이름
 
-                var p = document.createElement("p");
-                p.innerHTML = data.val().description_origin; // 레시피 요약 설명
+                    var p = document.createElement("p");
+                    p.innerHTML = data.val().description_origin; // 레시피 요약 설명
 
-                //***** 계층 관계대로 붙여주세요 86번~98번줄 참고!
-                addingSectionRow[0].appendChild(col).appendChild(item).appendChild(a);
-                a.appendChild(preview);
-                item.appendChild(ritext).appendChild(catname);
-                ritext.appendChild(name_link).appendChild(title);
-                ritext.appendChild(p);
+                    //***** 계층 관계대로 붙여주세요 86번~98번줄 참고!
+                    addingSectionRow[0].appendChild(col).appendChild(item).appendChild(a);
+                    a.appendChild(preview);
+                    item.appendChild(ritext).appendChild(catname);
+                    ritext.appendChild(name_link).appendChild(title);
+                    ritext.appendChild(p);
+                }
             });
         }
 
     </script>
 
 
-    <!-- Categories Feature Recipe Section Begin -->
-    <section class="categories-feature-recipe spad">
-        <div class="section-title">
-            <h5>Featured Recipes</h5>
-        </div>
-        <div class="container po-relative">
-            <div class="plus-icon">
-                <i class="fa fa-plus"></i>
-            </div>
-            <div class="row">
-                <div class="col-lg-7">
-                    <div class="cfr-item">
-                        <div class="cfr-item-img set-bg" data-setbg="img/cat-feature/big-1.jpg">
-                            <i class="fa fa-plus"></i>
-                        </div>
-                        <div class="cfr-item-text">
-                            <div class="cat-name">Vegan</div>
-                            <a href="#">
-                                <h4>One Pot Weeknight Lasagna Soup Recipe</h4>
-                            </a>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                                ut labore et dolore magna aliqua.</p>
-                        </div>
-                    </div>
-                    <div class="cfr-item">
-                        <div class="cfr-item-img set-bg" data-setbg="img/cat-feature/big-2.jpg">
-                            <i class="fa fa-plus"></i>
-                        </div>
-                        <div class="cfr-item-text">
-                            <div class="cat-name">Meat Lover</div>
-                            <a href="#">
-                                <h4>Veggie soup with Mushrooms</h4>
-                            </a>
-                            <p>Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-                                aliqua. Lorem ipsum dolor sit amet.</p>
-                        </div>
-                    </div>
-                    <div class="cfr-item">
-                        <div class="cfr-item-img set-bg" data-setbg="img/cat-feature/big-3.jpg">
-                            <i class="fa fa-plus"></i>
-                        </div>
-                        <div class="cfr-item-text">
-                            <div class="cat-name">Desert</div>
-                            <a href="#">
-                                <h4>Caramel Ice Cream with Berries</h4>
-                            </a>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                                ut labore et dolore magna aliqua.</p>
-                        </div>
-                    </div>
-                    <div class="cfr-item">
-                        <div class="cfr-item-img set-bg" data-setbg="img/cat-feature/big-4.jpg">
-                            <i class="fa fa-plus"></i>
-                        </div>
-                        <div class="cfr-item-text">
-                            <div class="cat-name">Desert</div>
-                            <a href="#">
-                                <h4>Freash Octopuse with lime juice</h4>
-                            </a>
-                            <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit
-                                amet, consectetur adipiscing.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 offset-lg-1">
-                    <div class="cfr-small-item">
-                        <a href="#"><img src="img/cat-feature/small-1.jpg" alt=""></a>
-                        <div class="cfr-small-text">
-                            <div class="cat-name">Vegan</div>
-                            <h6>One Pot Weeknight Lasagna Soup Recipe</h6>
-                        </div>
-                    </div>
-                    <div class="cfr-small-item">
-                        <a href="#"><img src="img/cat-feature/small-2.jpg" alt=""></a>
-                        <div class="cfr-small-text">
-                            <div class="cat-name">Vegan</div>
-                            <h6>Lava Cake with a Tone of Chocolate</h6>
-                        </div>
-                    </div>
-                    <div class="cfr-small-item">
-                        <a href="#"><img src="img/cat-feature/small-3.jpg" alt=""></a>
-                        <div class="cfr-small-text">
-                            <div class="cat-name">Vegan</div>
-                            <h6>One Pot Weeknight Lasagna Soup Recipe</h6>
-                        </div>
-                    </div>
-                    <div class="cfr-small-item">
-                        <a href="#"><img src="img/cat-feature/small-4.jpg" alt=""></a>
-                        <div class="cfr-small-text">
-                            <div class="cat-name">Vegan</div>
-                            <h6>Smoked Salmon mini Sandwiches with Onion</h6>
-                        </div>
-                    </div>
-                    <div class="cfr-small-item">
-                        <a href="#"><img src="img/cat-feature/small-5.jpg" alt=""></a>
-                        <div class="cfr-small-text">
-                            <div class="cat-name">Vegan</div>
-                            <h6>Asparagus with Pork Loin and Vegetables</h6>
-                        </div>
-                    </div>
-                    <div class="cfr-small-item">
-                        <a href="#"><img src="img/cat-feature/small-6.jpg" alt=""></a>
-                        <div class="cfr-small-text">
-                            <div class="cat-name">Vegan</div>
-                            <h6>Dry Cookies with Corn</h6>
-                        </div>
-                    </div>
-                    <div class="cfr-small-item">
-                        <a href="#"><img src="img/cat-feature/small-7.jpg" alt=""></a>
-                        <div class="cfr-small-text">
-                            <div class="cat-name">Vegan</div>
-                            <h6>Italian Tiramisu with Coffe</h6>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <!-- Similar Recipe Section Begin -->
+    <section class="similar-recipe spad">
+        <h3>Recent Recipes</h3>
+        <div class="container">
+            <div class="row"></div>
         </div>
     </section>
-    <!-- Categories Feature Recipe Section End -->
+    <!-- Similar Recipe Section End -->
+
+    <script>
+        var addingSectionTop_ = document.getElementsByClassName("similar-recipe spad")[0];
+        var addingSectionRow_ = addingSectionTop_.getElementsByClassName("row");
+
+        var recentPostsRef = firebase.database().ref('recipes/').orderByKey().limitToLast(4);
+        recentPostsRef.on('child_added', function (data) {
+            var col = document.createElement("div");
+            col.setAttribute("class", "col-lg-3 col-md-6");
+            var item = document.createElement('div');
+            item.setAttribute('class', 'similar-item');
+            var a = document.createElement("a");
+            var href = "recipe.html?key=" + data.key;
+            a.setAttribute("href", href);
+
+            var preview = document.createElement("img");
+            preview.setAttribute("src", data.val().img);
+
+            var smrtext = document.createElement("div");
+            smrtext.setAttribute("class", "ri-similar-text");
+
+            //***** 계층 관계대로 붙여주세요
+            addingSectionRow_[0].appendChild(col).appendChild(item).appendChild(a);
+            a.appendChild(preview);
+            item.appendChild(smrtext)
+        });
+    </script>
 
     <!-- Footer Section Begin -->
     <footer class="footer-section">
@@ -386,9 +308,9 @@
                                 <img src="img/footer-logo.png" alt="">
                             </a>
                         </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo
-                            viverra maecenas accumsan lacus vel facilisis.</p>
+                        <p>2020 Gachon University Web Programming Term Project.<br>
+                            Contributors: Kim Sangmin / Ko Haesol / Park Taehwan / Lee Ji An
+                        </p>
                     </div>
                 </div>
                 <div class="col-lg-6 offset-lg-1">

@@ -583,6 +583,15 @@ ol {
 /*---------------------
   Top Recipe
 -----------------------*/
+.categoryName{
+	height : 60px;
+	width: 300px;
+	background-color : pink;
+	margin-bottom : 15px;
+	display: block;
+	padding-top : 13px;
+	text-align : center;
+}
 
 .top-recipe {
 	background: #F8F9FB;
@@ -1786,6 +1795,53 @@ ol {
 	margin-right: 0;
 }
 
+.nutrition-fact-ct {
+	background: #353535;
+	padding: 0 40px;
+	padding-top: 50px;
+	padding-bottom: 20px;
+	max-width: 600px;
+}
+
+.nutrition-fact-ct .nutri-title {
+	overflow: hidden;
+	padding-bottom: 35px;
+	margin-left: -40px;
+	margin-right: -40px;
+	border-bottom: 2px solid #fff;
+	padding-left: 40px;
+	padding-right: 40px;
+}
+
+.nutrition-fact-ct .nutri-title h6 {
+	float: left;
+	color: #fff;
+	font-size: larger;
+	font-weight: 600;
+}
+
+.nutrition-fact-ct .nutri-title span {
+	float: right;
+	color: #fff;
+	font-weight: 600;
+}
+.nutrition-fact-ct ul {
+	margin-top: 23px;
+}
+
+.nutrition-fact-ct ul li {
+	list-style: none;
+	display: inline-block;
+	color: #fff;
+	margin-right: 15px;
+	margin-bottom: 10px;
+	font-weight: 600;
+}
+
+.nutrition-fact-ct ul li:last-child {
+	margin-right: 0;
+}
+
 .nutrition-fact {
 	background: #3160aa;
 	padding: 0 40px;
@@ -1916,7 +1972,7 @@ ol {
 }
 
 .recipe-right .notes .notes-item p {
-	margin-top: 10px;
+	display: -webkit-inline-box;
 }
 
 /*--------------------------
@@ -2724,4 +2780,30 @@ ol {
 	.map .map-content {
 		right: calc(50% - 131px);
 	}
+}
+.video {
+    position: relative; 
+    padding-bottom: 56.25%;
+    height:0; 
+    overflow:hidden; 
+}
+.video iframe,
+.video object,
+.video embed { 
+    position: absolute; 
+    top: 0; 
+    left: 0;
+    width: 100%; 
+    height:100%; 
+}
+
+.recipe-right .notes h3 {
+	color: #353535;
+	font-weight: 700;
+	margin-bottom: 35px;
+}
+
+.blog-section .blog-pic img{
+	display : block;
+    margin : auto;
 }
